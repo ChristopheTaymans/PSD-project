@@ -21,6 +21,7 @@ sap.ui.define([
 	 * @memberof be.infrabel.genericshdemo.controllers.Master
 	 * @author Christophe Taymans
 	 **/
+	
 	oController.prototype.onInit = function () {	
 		this.getRouter().getRoute("main").attachMatched(this._onRouteMatched, this);
 		this.setModel(new JSON({
