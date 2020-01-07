@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<f:Form editable="true">
+		<f:layout>
+			<f:ResponsiveGridLayout labelSpanXL="{span>/singleColumn/labelSpanXL}" labelSpanL="{span>/singleColumn/labelSpanL}"
+				labelSpanM="{span>/singleColumn/labelSpanM}" labelSpanS="{span>/singleColumn/labelSpanS}" emptySpanXL="{span>/singleColumn/emptySpanXL}"
+				emptySpanL="{span>/singleColumn/emptySpanL}" emptySpanM="{span>/singleColumn/emptySpanM}" emptySpanS="{span>/singleColumn/emptySpanS}"
+				columnsXL="{span>/singleColumn/columnsXL}" columnsL="{span>/singleColumn/columnsL}" columnsM="{span>/singleColumn/columnsM}"
+				adjustLabelSpan="{span>/singleColumn/adjustLabelSpan}" singleContainerFullSize="{span>/singleColumn/singleContainerFullSize}"/>
+		</f:layout>
+		<f:formContainers>
+			<f:FormContainer>
+				<f:formElements>
+					<f:FormElement>
+						<Table id="tableMilestonesID" width="100%" items="{ path: 'main>ToMilestones' }" noDataText="{i18n>tableNoMilestones}"
+							busyIndicatorDelay="{global>/Delay}" growing="true" growingScrollToLoad="true" updateFinished="onMilestoneUpdateFinished"
+							mode="{= ${global>/edit} ? 'Delete' : 'None'}" delete="onDelete">
+							<headerToolbar>
+								<Toolbar>
+									<Title text="{i18n>tableMilestoneTitle}"/>
+									<ToolbarSpacer/>
+									<Button icon="sap-icon://add" visible="{global>/edit}" press="onAddMilestone"/>
+									<Button icon="sap-icon://activate" visible="{global>/edit}" press="onGenerateMilestones"/>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column id="MilestoneIDColumn" width="8%">
+									<Text text="{i18n>tableMilestoneIDColumnTitle}" id="MilestoneIDColumnTitle"/>
+								</Column>
+								<Column id="WBS2IDColumn" width="12%">
+									<Text text="{i18n>tableWBS2IDColumnTitle}" id="WBS2IDColumnTitle"/>
+								</Column>
+								<Column id="UsageIDColumn" width="6%">
+									<Text text="{i18n>tableUsageIDColumnTitle}" id="UsageIDColumnTitle"/>
+								</Column>
+								<Column id="MilestoneDescriptionIDColumn" width="23%">
+									<Text text="{i18n>tableMilestoneDescriptionIDColumnTitle}" id="MilestoneDescriptionIDColumnTitle"/>
+								</Column>
+								<Column id="StartDateIDColumn" width="12%">
+									<Text text="{i18n>tableStartDateIDColumnTitle}" id="StartDateIDColumnTitle"/>
+								</Column>
+								<Column id="DurationIDColumn" width="13%" hAlign="Center">
+									<Text text="{i18n>tableDurationIDColumnTitle}" id="DurationIDColumnTitle"/>
+								</Column>
+								<Column id="BasicFixDateIDColumn" width="12%">
+									<Text text="{i18n>tableBasicFixDateIDColumnTitle}" id="BasicFixDateIDColumnTitle"/>
+								</Column>
+								<Column id="CompletionIDColumn" width="9%" hAlign="Center" >
+									<Text text="{i18n>tableCompletionIDColumnTitle}" id="CompletionIDColumnTitle"/>
+								</Column>
+								<Column id="MilestoneActionsIDColumn" hAlign="Right" width="5%">
+									<Text text="" id="MilestoneActionsIDColumnTitle"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{main>MilestoneID}"/>
+										<Text text="{main>WBSID}"/>
+										<Text text="{main>MilestoneUsage}"/>
+										<Text text="{main>MilestoneDescription}"/>
+										<Text text="{path:'main>Startdate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}" />
+										<Text text="{main>Duration}" />
+										<Text text="{path:'main>BasicFixDate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}" />
+										<Text text="{main>Completion}" />
+										<Button icon="sap-icon://edit" visible="{global>/edit}" press="onEditMilestone"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+</core:FragmentDefinition>

@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Toolbar>
+		<Title text="{i18n>GeoLocationData}"/>
+		<ToolbarSpacer />
+		<SegmentedButton selectedKey="{data>/Level}" selectionChange="onLevelChange" enabled="{settings>/edit}">
+			<items>
+			    <SegmentedButtonItem visible="false" key="0" />
+				<SegmentedButtonItem text="{i18n>FunctionalLocation}" key="1" />
+				<SegmentedButtonItem text="{i18n>LRP}" key="2" />
+				<SegmentedButtonItem text="{i18n>District}" key="3" />
+				<SegmentedButtonItem text="{i18n>Location}" key="4" />
+			</items>
+		</SegmentedButton>
+		<ToolbarSpacer />
+		<Button icon="sap-icon://add" visible="{= ${settings>/edit} &amp;&amp; !(${data>/Level}==='0') ? true : false}" press="onAddPress" />
+	</Toolbar>
+</core:FragmentDefinition>

@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>personresponsiblesearchhelpTitle}"
+		class="sapUiPopupWithPadding"			
+		growing='true'
+		growingThreshold='100'
+		search="onPartnerSearch"
+		confirm="onPartnerClose"
+		cancel="onPartnerClose">
+		<CustomListItem>	   
+			  <Text text="{main>PartnerId} {main>PartnerLongName}" />		
+		</CustomListItem>
+	</SelectDialog>
+</core:FragmentDefinition>

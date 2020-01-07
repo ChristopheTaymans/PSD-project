@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZPS_PCD_SRV" xml:lang="nl" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="Project" sap:content-version="1">
+				<Key><PropertyRef Name="ProjectID"/></Key><Property Name="ProjectID" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="ExternalProjectID" Type="Edm.String" Nullable="false" MaxLength="24" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Omschrijving" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="OperationalName" Type="Edm.String" Nullable="false" MaxLength="255" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="LongText" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Motivation" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="InScope" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="OutOfScope" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Benefits" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Dependencies" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Assumption" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Constraints" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="StartDateWork" Type="Edm.DateTime" Precision="7" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="EndDateWork" Type="Edm.DateTime" Precision="7" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="ChangedOnDate" Type="Edm.DateTime" Precision="7" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="ChangedOnTime" Type="Edm.Time" Precision="0" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="ChangedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Gewijzigd door" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToWork" Relationship="ZPS_PCD_SRV.ProjectToWork" FromRole="FromRole_ProjectToWork" ToRole="ToRole_ProjectToWork"/><NavigationProperty Name="ToLinkedProjects" Relationship="ZPS_PCD_SRV.ProjectToLinkedProjects" FromRole="FromRole_ProjectToLinkedProjects"
+					ToRole="ToRole_ProjectToLinkedProjects"/><NavigationProperty Name="ToStakeholders" Relationship="ZPS_PCD_SRV.ProjectToStakeholders" FromRole="FromRole_ProjectToStakeholders"
+					ToRole="ToRole_ProjectToStakeholders"/><NavigationProperty Name="ToRisks" Relationship="ZPS_PCD_SRV.ProjectToRisks" FromRole="FromRole_ProjectToRisks"
+					ToRole="ToRole_ProjectToRisks"/><NavigationProperty Name="ToCostCenters" Relationship="ZPS_PCD_SRV.ProjectToCostcenters" FromRole="FromRole_ProjectToCostcenters"
+					ToRole="ToRole_ProjectToCostcenters"/><NavigationProperty Name="ToWbs" Relationship="ZPS_PCD_SRV.ProjectToWbs" FromRole="FromRole_ProjectToWbs" ToRole="ToRole_ProjectToWbs"/><NavigationProperty Name="ToMilestones" Relationship="ZPS_PCD_SRV.ProjectToMilestones" FromRole="FromRole_ProjectToMilestones"
+					ToRole="ToRole_ProjectToMilestones"/></EntityType>
+			<EntityType Name="CostCenter" sap:content-version="1">
+				<Key><PropertyRef Name="ProjectID"/><PropertyRef Name="CostCenterID"/></Key><Property Name="ProjectID" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="CostCenterID" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Kostenplaats" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Omschrijving" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Omschrijving" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Percentage" Type="Edm.Decimal" Nullable="false" Precision="4" Scale="1" sap:label="Percentage" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Milestone" sap:content-version="1">
+				<Key><PropertyRef Name="ProjectID"/><PropertyRef Name="MilestoneID"/></Key><Property Name="ProjectID" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="WBSID" Type="Edm.String" Nullable="false" MaxLength="24" sap:label="WBS-element" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="MilestoneID" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="MilestoneUsage" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Gebruik" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MilestoneDescription" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Omschrijving" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Startdate" Type="Edm.DateTime" Precision="7" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Duration" Type="Edm.String" Nullable="false" MaxLength="5" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Unit" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="BasicFixDate" Type="Edm.DateTime" Precision="7" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Completion" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Stakeholder" sap:content-version="1">
+				<Key><PropertyRef Name="ProjectID"/><PropertyRef Name="StakeholderID"/></Key><Property Name="ProjectID" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="StakeholderID" Type="Edm.String" Nullable="false" MaxLength="60" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ServiceDirection" Type="Edm.String" Nullable="false" MaxLength="40" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="StakeholderPosition" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="StakeholderPositionText" Type="Edm.String" Nullable="false" MaxLength="20" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Impact" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="ImpactText" Type="Edm.String" Nullable="false" MaxLength="30" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Benefits" Type="Edm.String" Nullable="false" MaxLength="60" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Needs" Type="Edm.String" Nullable="false" MaxLength="60" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityType Name="LinkedProject" sap:content-version="1">
+				<Key><PropertyRef Name="ExternalLinkedProjectID"/><PropertyRef Name="ProjectID"/><PropertyRef Name="ManagingService"/></Key><Property Name="LinkedProjectID" Type="Edm.String" Nullable="false" MaxLength="24" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ExternalLinkedProjectID" Type="Edm.String" Nullable="false" MaxLength="24" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ProjectID" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="ManagingService" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Work" sap:content-version="1">
+				<Key><PropertyRef Name="ProjectID"/><PropertyRef Name="Priority"/></Key><Property Name="ProjectID" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Priority" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="PriorityText" Type="Edm.String" Nullable="false" MaxLength="30" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Motivation" Type="Edm.String" Nullable="false" MaxLength="255" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Risk" sap:content-version="1">
+				<Key><PropertyRef Name="ProjectID"/><PropertyRef Name="Type"/></Key><Property Name="ProjectID" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="TypeText" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="K. tekst" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Impact" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="ImpactText" Type="Edm.String" Nullable="false" MaxLength="30" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Probability" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ProbabilityText" Type="Edm.String" Nullable="false" MaxLength="30" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Wbs" sap:content-version="1">
+				<Key><PropertyRef Name="WbsID"/></Key><Property Name="ProjectID" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="WbsID" Type="Edm.String" Nullable="false" MaxLength="24" sap:label="WBS-element" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Omschrijving" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ExecSpeciality" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Uitvoerende spec" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Usage" sap:content-version="1">
+				<Key><PropertyRef Name="Specialty"/><PropertyRef Name="Milestone"/></Key><Property Name="Specialty" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Uitvoerende spec" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Duration" Type="Edm.String" Nullable="false" MaxLength="5" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Milestone" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Gebruik" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Omschrijving" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<ComplexType Name="Return"><Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Type melding" sap:creatable="false" sap:updatable="false"
+				sap:sortable="false" sap:filterable="false"/><Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Meldingenklasse" sap:creatable="false"
+				sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Number" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Meldingsnummer" sap:creatable="false"
+				sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:label="Meldingstekst" sap:creatable="false"
+				sap:updatable="false" sap:sortable="false" sap:filterable="false"/></ComplexType>
+			<ComplexType Name="Complete"><Property Name="IsPsdComplete" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false"
+				sap:sortable="false" sap:filterable="false"/></ComplexType>
+			<Association Name="ProjectToStakeholders" sap:content-version="1"><End Type="ZPS_PCD_SRV.Project" Multiplicity="1" Role="FromRole_ProjectToStakeholders"/><End Type="ZPS_PCD_SRV.Stakeholder" Multiplicity="*" Role="ToRole_ProjectToStakeholders"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ProjectToStakeholders"><PropertyRef Name="ProjectID"/></Principal>
+					<Dependent Role="ToRole_ProjectToStakeholders"><PropertyRef Name="ProjectID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ProjectToWork" sap:content-version="1"><End Type="ZPS_PCD_SRV.Project" Multiplicity="1" Role="FromRole_ProjectToWork"/><End Type="ZPS_PCD_SRV.Work" Multiplicity="*" Role="ToRole_ProjectToWork"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ProjectToWork"><PropertyRef Name="ProjectID"/></Principal>
+					<Dependent Role="ToRole_ProjectToWork"><PropertyRef Name="ProjectID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ProjectToCostcenters" sap:content-version="1"><End Type="ZPS_PCD_SRV.Project" Multiplicity="1" Role="FromRole_ProjectToCostcenters"/><End Type="ZPS_PCD_SRV.CostCenter" Multiplicity="*" Role="ToRole_ProjectToCostcenters"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ProjectToCostcenters"><PropertyRef Name="ProjectID"/></Principal>
+					<Dependent Role="ToRole_ProjectToCostcenters"><PropertyRef Name="ProjectID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ProjectToRisks" sap:content-version="1"><End Type="ZPS_PCD_SRV.Project" Multiplicity="1" Role="FromRole_ProjectToRisks"/><End Type="ZPS_PCD_SRV.Risk" Multiplicity="*" Role="ToRole_ProjectToRisks"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ProjectToRisks"><PropertyRef Name="ProjectID"/></Principal>
+					<Dependent Role="ToRole_ProjectToRisks"><PropertyRef Name="ProjectID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ProjectToMilestones" sap:content-version="1"><End Type="ZPS_PCD_SRV.Project" Multiplicity="1" Role="FromRole_ProjectToMilestones"/><End Type="ZPS_PCD_SRV.Milestone" Multiplicity="*" Role="ToRole_ProjectToMilestones"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ProjectToMilestones"><PropertyRef Name="ProjectID"/></Principal>
+					<Dependent Role="ToRole_ProjectToMilestones"><PropertyRef Name="ProjectID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ProjectToWbs" sap:content-version="1"><End Type="ZPS_PCD_SRV.Project" Multiplicity="1" Role="FromRole_ProjectToWbs"/><End Type="ZPS_PCD_SRV.Wbs" Multiplicity="*" Role="ToRole_ProjectToWbs"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ProjectToWbs"><PropertyRef Name="ProjectID"/></Principal>
+					<Dependent Role="ToRole_ProjectToWbs"><PropertyRef Name="ProjectID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ProjectToLinkedProjects" sap:content-version="1"><End Type="ZPS_PCD_SRV.Project" Multiplicity="1" Role="FromRole_ProjectToLinkedProjects"/><End Type="ZPS_PCD_SRV.LinkedProject" Multiplicity="*" Role="ToRole_ProjectToLinkedProjects"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ProjectToLinkedProjects"><PropertyRef Name="ProjectID"/></Principal>
+					<Dependent Role="ToRole_ProjectToLinkedProjects"><PropertyRef Name="ProjectID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZPS_PCD_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ProjectSet" EntityType="ZPS_PCD_SRV.Project" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="CostCenterSet" EntityType="ZPS_PCD_SRV.CostCenter" sap:pageable="false" sap:content-version="1"/><EntitySet Name="MilestoneSet" EntityType="ZPS_PCD_SRV.Milestone" sap:pageable="false" sap:content-version="1"/><EntitySet Name="StakeholderSet" EntityType="ZPS_PCD_SRV.Stakeholder" sap:pageable="false" sap:content-version="1"/><EntitySet Name="LinkedProjectSet" EntityType="ZPS_PCD_SRV.LinkedProject" sap:pageable="false" sap:content-version="1"/><EntitySet Name="WorkSet" EntityType="ZPS_PCD_SRV.Work" sap:pageable="false" sap:content-version="1"/><EntitySet Name="RiskSet" EntityType="ZPS_PCD_SRV.Risk" sap:pageable="false" sap:content-version="1"/><EntitySet Name="WbsSet" EntityType="ZPS_PCD_SRV.Wbs" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false"
+				sap:addressable="false" sap:content-version="1"/><EntitySet Name="UsageSet" EntityType="ZPS_PCD_SRV.Usage" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="ProjectToRisks_AssocSet" Association="ZPS_PCD_SRV.ProjectToRisks" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="ProjectSet" Role="FromRole_ProjectToRisks"/><End EntitySet="RiskSet" Role="ToRole_ProjectToRisks"/></AssociationSet>
+				<AssociationSet Name="ProjectToWork_AssocSet" Association="ZPS_PCD_SRV.ProjectToWork" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="ProjectSet" Role="FromRole_ProjectToWork"/><End EntitySet="WorkSet" Role="ToRole_ProjectToWork"/></AssociationSet>
+				<AssociationSet Name="ProjectToStakeholders_AssocSet" Association="ZPS_PCD_SRV.ProjectToStakeholders" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ProjectSet" Role="FromRole_ProjectToStakeholders"/><End EntitySet="StakeholderSet" Role="ToRole_ProjectToStakeholders"/></AssociationSet>
+				<AssociationSet Name="ProjectToMilestones_AssocSet" Association="ZPS_PCD_SRV.ProjectToMilestones" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ProjectSet" Role="FromRole_ProjectToMilestones"/><End EntitySet="MilestoneSet" Role="ToRole_ProjectToMilestones"/></AssociationSet>
+				<AssociationSet Name="ProjectToWbs_AssocSet" Association="ZPS_PCD_SRV.ProjectToWbs" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="ProjectSet" Role="FromRole_ProjectToWbs"/><End EntitySet="WbsSet" Role="ToRole_ProjectToWbs"/></AssociationSet>
+				<AssociationSet Name="ProjectToLinkedProjects_AssocSet" Association="ZPS_PCD_SRV.ProjectToLinkedProjects" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ProjectSet" Role="FromRole_ProjectToLinkedProjects"/><End EntitySet="LinkedProjectSet" Role="ToRole_ProjectToLinkedProjects"/></AssociationSet>
+				<AssociationSet Name="ProjectToCostcenters_AssocSet" Association="ZPS_PCD_SRV.ProjectToCostcenters" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ProjectSet" Role="FromRole_ProjectToCostcenters"/><End EntitySet="CostCenterSet" Role="ToRole_ProjectToCostcenters"/></AssociationSet>
+				<FunctionImport Name="GenerateMilestones" ReturnType="ZPS_PCD_SRV.Return" m:HttpMethod="GET"><Parameter Name="ProjectID" Type="Edm.String" Mode="In" MaxLength="8"/></FunctionImport>
+				<FunctionImport Name="CalculateDate" ReturnType="ZPS_PCD_SRV.Milestone" EntitySet="MilestoneSet" m:HttpMethod="GET"><Parameter Name="WBSID" Type="Edm.String" Mode="In" MaxLength="24"/><Parameter Name="ProjectID" Type="Edm.String" Mode="In" MaxLength="8"/><Parameter Name="StartDate" Type="Edm.DateTime" Mode="In" Precision="0"/><Parameter Name="MilestoneUsage" Type="Edm.String" Mode="In" MaxLength="5"/></FunctionImport>
+				<FunctionImport Name="CheckComplete" ReturnType="ZPS_PCD_SRV.Complete" m:HttpMethod="GET"><Parameter Name="ProjectID" Type="Edm.String" Mode="In" MaxLength="8"/></FunctionImport>
+			</EntityContainer><atom:link rel="self"
+				href="https://webidecp-s010a09b2.dispatcher.eu3.hana.ondemand.com/destinations/FID_EXM222/sap/opu/odata/sap/ZPS_PCD_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-s010a09b2.dispatcher.eu3.hana.ondemand.com/destinations/FID_EXM222/sap/opu/odata/sap/ZPS_PCD_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"  xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<Table id="tableStatementID" width="100%" items="{ path: 'main>ToStakeholders' }" noDataText="{i18n>tableNoStakeholders}"
+		busyIndicatorDelay="{global>/Delay}" growing="true" growingScrollToLoad="true" updateFinished="onStakeholderUpdateFinished"
+		mode="{= ${global>/edit} ? 'Delete' : 'None'}" delete="onDelete">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>tableStakeholderTitle}"/>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://add" visible="{global>/edit}" press="onAddStakeholder"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column id="StakeholderIDColumn">
+				<Text text="{i18n>tableStakeholderIDColumnTitle}" id="StakeholderIDColumnTitle"/>
+			</Column>
+			<Column id="ServiceIDColumn">
+				<Text text="{i18n>tableServiceIDColumnTitle}" id="ServiceIDColumnTitle"/>
+			</Column>
+			<Column id="PositionIDColumn">
+				<Text text="{i18n>tablePositionIDColumnTitle}" id="PositionIDColumnTitle"/>
+			</Column>
+			<Column id="ImpactIDColumn">
+				<Text text="{i18n>tableImpactIDColumnTitle}" id="ImpactIDColumnTitle"/>
+			</Column>
+			<Column id="BenefitsIDColumn">
+				<Text text="{i18n>tableBenefitsIDColumnTitle}" id="BenefitsIDColumnTitle"/>
+			</Column>
+			<Column id="NeedsIDColumn">
+				<Text text="{i18n>tableNeedsIDColumnTitle}" id="NeedsIDColumnTitle"/>
+			</Column>
+			<Column id="StakeholderActionsIDColumn" hAlign="Right">
+				<Text text="" id="StakeholderActionsIDColumnTitle"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text text="{main>StakeholderID}"/>
+					<Text text="{main>ServiceDirection}"/>
+					<searchHelper:ComboBox selectedKey="{main>StakeholderPosition}" searchHelpId="PositionStakeholder" editable="false" compId="be.infrabel.pcd"/>
+					<searchHelper:ComboBox selectedKey="{main>Impact}" searchHelpId="ImpactStakeholder" editable="false" compId="be.infrabel.pcd"/>
+					<Text text="{main>Benefits}"/>
+					<Text text="{main>Needs}"/>
+					<Button icon="sap-icon://edit" visible="{global>/edit}" press="onEditStakeholder"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

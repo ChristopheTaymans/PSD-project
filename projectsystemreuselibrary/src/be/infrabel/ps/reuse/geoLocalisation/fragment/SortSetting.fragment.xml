@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="onSortDialogConfirm">
+		<sortItems>
+			<ViewSettingsItem text="{i18n>FunctionalLocation}" key="FlocLabel" selected="true" />
+			<ViewSettingsItem text="{i18n>Description}" key="Pltxt" />
+			<ViewSettingsItem text="{i18n>ObjectType}" key="ObjectType" />
+			<ViewSettingsItem text="{i18n>LRP}" key="LrpId" />
+			<ViewSettingsItem text="{i18n>CostCenter}" key="CostCenter" />
+            <ViewSettingsItem text="{i18n>CostCenterDesc}" key="CostCenterDesc" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

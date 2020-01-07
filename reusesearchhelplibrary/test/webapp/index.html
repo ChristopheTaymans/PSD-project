@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title></title>
+
+        <!--src="../../resources/sap-ui-core.js" -->
+        <script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/1.60.15/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-preload="async" 
+			data-sap-ui-resourceroots='{"be.infrabel.genericshdemo": ".","be.infrabel.reuse" : "../library"}'
+			data-sap-ui-bindingSyntax="complex">
+		</script>
+		<script>
+
+        sap.ui.getCore().attachInit(function() {
+            sap.ui.component({
+                name: "be.infrabel.genericshdemo", 
+                async: true,
+                manifestFirst: true
+               , componentData: { startupParameters: {} }
+            }).then(function(oComponent) {
+                sap.ui.require([
+                    'sap/ui/core/ComponentContainer',
+                    'sap/m/Shell'
+                ], function(ComponentContainer, Shell) {
+                    new Shell({
+                        app: new ComponentContainer({
+                            height: "100%",
+                            component: oComponent
+                        })
+                    }).placeAt("content");
+                });
+            });
+		});
+				</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	</body>
+
+</html>

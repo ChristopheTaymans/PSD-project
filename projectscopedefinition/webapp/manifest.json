@@ -1,0 +1,301 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "be.infrabel.psd",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "4.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZPS_PSD_V2_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}		
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"fullWidth": true,
+		"icons": {
+			"icon": "sap-icon://task",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": false
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "be.infrabel.psd.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.0",
+			"libs": {
+				"sap.collaboration": {
+					"lazy": true
+				},
+				"sap.ui.core": {},				
+				"sap.m": {},
+				"sap.f": {},				
+				"sap.ui.layout": {},
+				"be.infrabel.ps.reuse": {},
+				"be.infrabel.reuse.cross": {}           		
+			}
+		},
+		"config": {
+			"sapFiori2Adaptation": {
+				"style": true,
+				"collapse": true,
+				"title": true,
+				"back": true,
+				"hierarchy": true
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "be.infrabel.psd.i18n.i18n"
+				}
+			},
+			"global": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"tree": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"main": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading",
+						"saml2":"disabled"
+					},
+					"defaultBindingMode": "TwoWay",
+					"useBatch": true,
+					"json": true				
+				}
+			}			
+		},
+		"services": {
+			"ShellUIService": {
+				"factoryName": "sap.ushell.ui5service.ShellUIService",
+				"lazy": false,
+				"settings": {
+					"setTitle": "auto"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"viewType": "XML",
+				"viewPath": "be.infrabel.psd.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": [
+						"notFound"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": ":parent*:&/ProjectStructure/{projectId}/:mode:/:originPath:",
+					"name": "ProjectStructureRoute",
+					"target": [		
+						"projectstructureTarget"
+					]
+				},
+				{
+					"pattern": ":parent*:&/ProjectDefinition/{projectId}/{path}/:mode:",
+					"name": "ProjectDefinitionRoute",
+					"target": [
+						"projectdefinitionTarget"			
+					]
+				},
+				{
+					"pattern": ":parent*:&/CreateProjectDefinition",
+					"name": "CreateProjectDefinitionRoute",
+					"target": [
+						"createprojectdefinitionTarget"
+					]
+				},				
+				{
+					"pattern": ":parent*:&/QuickScreen/{profileId}",
+					"name": "CreateByQuickScreenRoute",
+					"target": [
+						"createByQuickScreenTarget"
+					]
+				},
+				{
+					"pattern": ":parent*:&/WBS1/{projectId}/{path}/:mode:",
+					"name": "Wbs1Route",
+					"target": [
+						"wbs1Target"
+					]
+				},
+				{
+					"pattern": ":parent*:&/WBS2/{projectId}/{path}/:mode:",
+					"name": "Wbs2Route",
+					"target": [
+						"wbs2Target"
+					]
+				},
+				{
+					"pattern": ":parent*:&/WBS3/{projectId}/{path}/:mode:",
+					"name": "Wbs3Route",
+					"target": [
+						"wbs3Target"
+					]
+				},
+				{
+					"pattern": ":parent*:",
+					"name": "worklistRoute",
+					"target": "worklistTarget"
+				}
+			],
+			"targets": {
+				"worklistTarget": {
+					"viewName": "Worklist",
+					"viewId": "worklist",
+					"viewLevel": 1,
+					"title": "{i18n>worklistViewTitle}"
+				},
+				"flexiblecolumnlayoutTarget": {
+					"viewName": "FlexibleColumnLayout",
+					"viewId": "flexiblecolumnlayout",
+					"viewLevel": 2,
+					"title": "{i18n>flexibelcolumnlayoutViewTitle}"
+				},	
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				},
+				"projectstructureTarget": {
+					"parent": "flexiblecolumnlayoutTarget",
+					"controlId": "FlexibleColumnLayoutId",
+					"viewName": "ProjectStructure",
+					"viewId": "projectstructure",
+					"controlAggregation": "beginColumnPages"
+				},
+				"projectdefinitionTarget": {
+					"parent": "flexiblecolumnlayoutTarget",
+					"controlId": "FlexibleColumnLayoutId",
+					"viewName": "ProjectDefinition",
+					"viewId": "projectdefinition",
+					"controlAggregation": "midColumnPages"
+				},
+				"createByQuickScreenTarget": {
+					"viewName": "CreateByQuickScreen",
+					"viewId": "CreateByQuickScreenId",
+					"viewLevel": 1
+				},
+				"createprojectdefinitionTarget": {
+					"viewName": "CreateProjectDefinition",
+					"viewId": "createprojectdefinition",
+					"viewLevel": 1
+				},
+				"wbs1Target": {
+					"parent": "flexiblecolumnlayoutTarget",
+					"controlId": "FlexibleColumnLayoutId",
+					"viewName": "Wbs1",
+					"viewId": "wbs1",
+					"controlAggregation": "midColumnPages"
+				},
+				"wbs2Target": {
+					"parent": "flexiblecolumnlayoutTarget",
+					"controlId": "FlexibleColumnLayoutId",
+					"viewName": "Wbs2",
+					"viewId": "wbs2",
+					"controlAggregation": "midColumnPages"
+				},
+				"wbs3Target": {
+					"parent": "flexiblecolumnlayoutTarget",
+					"controlId": "FlexibleColumnLayoutId",
+					"viewName": "Wbs3",
+					"viewId": "wbs3",
+					"controlAggregation": "midColumnPages"
+				}
+			}
+		},
+		"defaultSpan" : {
+			"singleColumn" : { 
+				"labelSpanXL":2,
+				"labelSpanL":2,
+				"labelSpanM":3,
+				"labelSpanS":12,
+				"emptySpanXL":0, 
+				"emptySpanL":0, 
+				"emptySpanM":0, 						
+				"emptySpanS":0,						
+				"columnsXL":1, 
+				"columnsL":1, 
+				"columnsM":1,
+				"adjustLabelSpan":false,
+				"singleContainerFullSize":true
+			},
+			"doubleColumn" : {			
+				"labelSpanXL":2,
+				"labelSpanL":4,
+				"labelSpanM":6,
+				"labelSpanS":12,
+				"emptySpanXL":0, 
+				"emptySpanL":0, 
+				"emptySpanM":0, 						
+				"emptySpanS":0,						
+				"columnsXL":2, 
+				"columnsL":2, 
+				"columnsM":2,
+				"adjustLabelSpan":false,
+				"singleContainerFullSize":true}
+		},
+		"flexEnabled": true,
+		"componentUsages": {	
+			"investmentProgramUsageEdit": {
+				"name": "be.infrabel.ps.reuse.investmentProgram",
+				"settings": {},
+				"componentData": {}
+			},
+			"relatedPartner": {
+				"name": "be.infrabel.ps.reuse.relatedPartnerTable",
+				"settings": {},
+				"componentData": {	
+					"partnerProfile": "I001",
+					"partnerFunction" : "AG"					
+				}
+			},
+			"geoLocalisation": {
+				"name": "be.infrabel.ps.reuse.geoLocalisation",
+				"settings": {},
+				"componentData": {
+					"flMultiSelect" : true
+				}
+			}
+		}
+	}
+}

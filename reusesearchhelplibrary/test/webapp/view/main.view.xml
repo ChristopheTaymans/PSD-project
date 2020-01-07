@@ -1,0 +1,96 @@
+<core:View xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+	xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch" xmlns:f="sap.f" height="100%"
+	controllerName="be.infrabel.genericshdemo.controller.main">
+	<f:DynamicPage id="page" showFooter="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Reusable generic search help Demo" />
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox>
+				<form:SimpleForm id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" labelSpanXL="2"
+					labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4"
+					emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+					singleContainerFullSize="false">
+					<form:content>
+						<core:Title
+							text="no suggestion / list in backend / value help only / only display value / key in list" />
+						<Label text="{i18n>ProjectLeaderLabel}" />
+					
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" valueHelpOnly="true" showSuggestion="false"
+							selectedKey="{main>PersonResponsableID}" searchHelpId="ResponsiblePerson"
+							displayMode="value" listWithKey="true"/>
+
+						<core:Title
+							text="suggestion enabled / list in backend / input enabled / only display key / key in list" />
+						<Label text="{i18n>Line}" />
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" showSuggestion="true"
+							selectedKey="{main>Line}" searchHelpId="Line" displayMode="key" listWithKey="true"/>
+						<Text text="{viewModel>/LineDescription}" />
+
+						<core:Title
+							text="suggestion enabled / runtime loaded list / input enabled / key + value display / no key in list / search pop up title explicit" />
+						<Label text="{i18n>District}" />
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" showSuggestion="true"
+							selectedKey="{main>District}" searchHelpId="District" listWithKey="false"
+							searchTitle="{i18n>District} search help" />
+
+						<core:Title
+							text="suggestion disabled / runtime loaded list  / value help only / no key in value / no key in list" />
+						<Label text="{i18n>Location}" />
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" showSuggestion="false" valueHelpOnly="true"
+							selectedKey="{main>Location}" searchHelpId="GeographicalLocation" displayMode="value"
+							listWithKey="false" />
+
+						<core:Title text="combobox / runtime loaded list" />
+						<Label text="{i18n>Track}" />
+						<searchHelper:ComboBox compId="be.infrabel.genericshdemo" searchHelpId="Track" selectedKey="{main>Track}" />
+
+						<core:Title text="select / runtime loaded list" />
+						<Label text="{i18n>Unit}" />
+						<searchHelper:Select compId="be.infrabel.genericshdemo" forceSelection="false" selectedKey="{main>BkUnit}"
+							searchHelpId="LengthUnit" />
+
+						<core:Title text="inter dependency" />
+						<Label text="{i18n>ControllingArea}" />
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" showSuggestion="true"
+							selectedKey="{viewModel>/ControllingArea}" searchHelpId="ControllingArea" displayMode="both"
+							 listWithKey="true"/>
+						<Label text="{i18n>CostCenter}" />
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" showSuggestion="true"
+							selectedKey="{viewModel>/CostCenter}" searchHelpId="CostCenter" displayMode="both" listWithKey="true" 
+						    dependencyKey="{viewModel>/ControllingArea}" dependencyField="KOKRS"/>
+
+						<core:Title text="inter dependency obligatory" />
+						<Label text="{i18n>ControllingArea}" />
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" showSuggestion="true"
+							selectedKey="{viewModel>/ControllingArea}" searchHelpId="ControllingArea" displayMode="both"
+							 listWithKey="true"/>
+						<Label text="{i18n>CostCenter}" />
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" showSuggestion="true"
+							selectedKey="{viewModel>/CostCenter}" searchHelpId="CostCenter" displayMode="both" listWithKey="true" 
+						    dependencyKey="{viewModel>/ControllingArea}" dependencyField="KOKRS" dependencyRequired="true"/>
+
+						<core:Title text="inter dependency with implicit dependency field description" />
+						<Label text="{i18n>ControllingArea}" />
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" showSuggestion="true"
+							selectedKey="{viewModel>/ControllingArea}" searchHelpId="ControllingArea" displayMode="both"
+							 listWithKey="true" change="onChange"/>
+						<Label text="{i18n>CostCenter}" />
+						<searchHelper:Input compId="be.infrabel.genericshdemo" type="Text" showValueHelp="true" showSuggestion="true"
+							selectedKey="{viewModel>/CostCenter}" searchHelpId="CostCenter" displayMode="both" listWithKey="true" 
+						    dependencyKey="{viewModel>/ControllingArea}" dependencyField="KOKRS" dependencyRequired="true" dependencyFieldDescription="testdesc"
+							/>
+					</form:content>
+				</form:SimpleForm>
+				<Title text="title for the search help dialog is copied from label associated with the input" />
+				<Label text="{i18n>District}" labelFor="districtInput" />
+				<searchHelper:Input compId="be.infrabel.genericshdemo" id="districtInput" type="Text" showValueHelp="true" showSuggestion="true"
+					selectedKey="{main>District}" searchHelpId="District" listWithKey="false" />
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</core:View>

@@ -1,0 +1,74 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m">
+    <f:SimpleForm 
+        id="InvestmentProgramForm"
+        editable="true"
+       
+        maxContainerCols="2"
+        layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="2"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="8"
+			columnsL="6"
+			columnsM="4"
+            >
+        <f:content>
+            <Title text ="{i18n>Fragment.assignment.title}"/>
+            <Label
+                id="lblInvestProgramId"
+                text="{i18n>positionId}" 
+                labelFor="inpInvestProgramId"
+                required="true" />
+                <ComboBox
+                id="inpInvestProgramId"
+                    editable="{main>/edit}"
+					showSecondaryValues= "{main>/edit}"
+                    selectedKey="{main>/InvestmentProgram}"
+                    selectionChange="changeInvestmentProgramSelected"
+					items="{
+						path: 'investmentProgram>/InvestmentProgramSet',
+						sorter: { path: 'Program' }	}">	
+					<core:ListItem key="{investmentProgram>Program}" text="{investmentProgram>Program}" additionalText="{investmentProgram>ProgramDescription}-{investmentProgram>ApprovalYear}"/>
+                      					<layoutData>
+						<l:GridData span="XL1 L1 M1 S1" />
+					</layoutData>						
+				</ComboBox>	 
+            <Input
+                id="inpYearId"              
+                editable="false"
+                value="{main>/InvestmentProgramYear}"
+            >
+  					<layoutData>
+						<l:GridData span="XL1 L1 M1 S1" />
+					</layoutData>
+            </Input>                         
+            <Input
+                id="inpPositionId"
+                required="true"
+                editable="{main>/edit}"
+                showValueHelp="{main>/edit}"
+				valueHelpRequest="onHandleValueHelpPositionId"
+                change="onChangePositionId"
+                value="{main>/PositionID}"
+                placeholder="{i18n>suggestPositionId}"> 
+  					<layoutData>
+						<l:GridData span="XL2 L2 M2 S2" />
+					</layoutData>                  
+             </Input>  
+            <Text
+                id="txtPositionIdDescriptionId"
+                text="{main>/PositionIdDescription}"> 
+            </Text>
+        </f:content>
+    </f:SimpleForm>
+</core:FragmentDefinition>

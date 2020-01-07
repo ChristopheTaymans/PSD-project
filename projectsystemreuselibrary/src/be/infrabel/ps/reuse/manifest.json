@@ -1,0 +1,57 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "be.infrabel.ps.reuse",
+		"type": "library",
+		"embeds": ["investmentProgram","relatedPartnerTable","geoLocalisation"],
+		"i18n": "messagebundle.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "Infrabel Project System Library",
+		"description": "Infrabel UI5 library for Project System Fiori Apps",
+		"arch": "",
+		"offline": false
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["base", "sap_hcb", "sap_belize", "sap_belize_plus"]
+	},
+	"sap.ui5": {
+		"resources": {
+			"js": [],
+			"css": []
+		},
+		"dependencies": {
+			"minUI5Version": "1.52.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {}
+			}
+		},
+		"library": {
+			"i18n": "messagebundle.properties",
+			"css": true,
+			"content": {
+				"controls": [],
+				"elements": [],
+				"types": [],
+				"interfaces": []
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "reusecomponent"
+	}
+}

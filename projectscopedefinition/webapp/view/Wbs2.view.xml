@@ -1,0 +1,78 @@
+<core:View displayBlock="true" controllerName="be.infrabel.psd.controller.Wbs2" height="100%" xmlns:f="sap.f"
+	xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<f:DynamicPage id="wbs2PageID">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>wbs2Title} {main>Node}" />
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="{span>/singleColumn/labelSpanXL}"
+							labelSpanL="{span>/singleColumn/labelSpanL}" labelSpanM="{span>/singleColumn/labelSpanM}"
+							labelSpanS="{span>/singleColumn/labelSpanS}" emptySpanXL="{span>/singleColumn/emptySpanXL}"
+							emptySpanL="{span>/singleColumn/emptySpanL}" emptySpanM="{span>/singleColumn/emptySpanM}"
+							emptySpanS="{span>/singleColumn/emptySpanS}" columnsXL="{span>/singleColumn/columnsXL}"
+							columnsL="{span>/singleColumn/columnsL}" columnsM="{span>/singleColumn/columnsM}"
+							adjustLabelSpan="{span>/singleColumn/adjustLabelSpan}"
+							singleContainerFullSize="{span>/singleColumn/singleContainerFullSize}" />
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<form:formElements>
+								<core:Fragment fragmentName="be.infrabel.psd.view.fragment.wbsHeader" type="XML" />
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="{span>/doubleColumn/labelSpanXL}"
+							labelSpanL="{span>/doubleColumn/labelSpanL}" labelSpanM="{span>/doubleColumn/labelSpanM}"
+							labelSpanS="{span>/doubleColumn/labelSpanS}" emptySpanXL="{span>/doubleColumn/emptySpanXL}"
+							emptySpanL="{span>/doubleColumn/emptySpanL}" emptySpanM="{span>/doubleColumn/emptySpanM}"
+							emptySpanS="{span>/doubleColumn/emptySpanS}" columnsXL="{span>/doubleColumn/columnsXL}"
+							columnsL="{span>/doubleColumn/columnsL}" columnsM="{span>/doubleColumn/columnsM}"
+							adjustLabelSpan="{span>/doubleColumn/adjustLabelSpan}"
+							singleContainerFullSize="{span>/doubleColumn/singleContainerFullSize}" />
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>executingserviceLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" showSuggestion="true"
+											editable="{global>/edit}" selectedKey="{main>wbs/ExecutingService}"
+											searchHelpId="ExecutingService" displayMode="both" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>executingspecialtyLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" showSuggestion="true"
+											editable="{global>/edit}" selectedKey="{main>wbs/ExecutingSpecialty}"
+											searchHelpId="ExecutingSpeciality" displayMode="both" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</core:View>

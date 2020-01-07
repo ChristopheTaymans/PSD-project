@@ -1,0 +1,169 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "be.infrabel.psd.quickscreen01",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZPS_PSD_QUICKSCREEN001_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_hcb", "sap_belize", "sap_belize_plus"]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "be.infrabel.psd.quickscreen01.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.52.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {},
+				"sap.ui.layout": {},
+				"be.infrabel.ps.reuse": {},
+				"be.infrabel.reuse.cross": {}     
+			}
+		},
+
+		"config": {
+			"sapFiori2Adaptation": {
+				"style": true,
+				"collapse": true,
+				"title": true,
+				"back": true,
+				"hierarchy": true
+			}
+		},
+
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "be.infrabel.psd.quickscreen01.i18n.i18n"
+				}
+			},
+			"global": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"main": {
+				"dataSource": "mainService",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading",
+						"saml2":"disabled"
+					},
+					"defaultBindingMode": "TwoWay",
+					"useBatch": true,
+					"json": true
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"viewType": "XML",
+				"viewPath": "be.infrabel.psd.quickscreen01.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": "true"
+			},
+			"routes": [
+				{
+					"pattern": ":parent*:",
+					"name": "home",
+					"target": ["home"]
+				}
+			],
+			"targets": {
+				"home": {
+					"viewName": "Home",
+					"viewId": "home",
+					"viewLevel": 1,
+					"title": "{i18n>title}"
+				}
+			}
+		},
+		"defaultSpan" : {
+			"singleColumn" : { 
+				"labelSpanXL":2,
+				"labelSpanL":2,
+				"labelSpanM":3,
+				"labelSpanS":12,
+				"emptySpanXL":0, 
+				"emptySpanL":0, 
+				"emptySpanM":0, 						
+				"emptySpanS":0,						
+				"columnsXL":1, 
+				"columnsL":1, 
+				"columnsM":1,
+				"adjustLabelSpan":false,
+				"singleContainerFullSize":true
+			},
+			"doubleColumn" : {			
+				"labelSpanXL":2,
+				"labelSpanL":4,
+				"labelSpanM":6,
+				"labelSpanS":12,
+				"emptySpanXL":0, 
+				"emptySpanL":0, 
+				"emptySpanM":0, 						
+				"emptySpanS":0,						
+				"columnsXL":2, 
+				"columnsL":2, 
+				"columnsM":2,
+				"adjustLabelSpan":false,
+				"singleContainerFullSize":true}
+		},
+		"flexEnabled": true,
+		"componentUsages": {	
+			"investmentProgramUsageEdit": {
+				"name": "be.infrabel.ps.reuse.investmentProgram",
+				"settings": {},
+				"componentData": {}
+			},
+			"geoLocalisation": {
+				"name": "be.infrabel.ps.reuse.geoLocalisation",
+				"settings": {},
+				"componentData": {
+					"flMultiSelect" : true
+				}
+			}
+		}
+	}
+}

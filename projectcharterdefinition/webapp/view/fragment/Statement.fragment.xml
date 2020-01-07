@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<f:Form editable="true">
+		<f:layout>
+			<f:ResponsiveGridLayout labelSpanXL="{span>/singleColumn/labelSpanXL}" labelSpanL="{span>/singleColumn/labelSpanL}"
+				labelSpanM="{span>/singleColumn/labelSpanM}" labelSpanS="{span>/singleColumn/labelSpanS}" emptySpanXL="{span>/singleColumn/emptySpanXL}"
+				emptySpanL="{span>/singleColumn/emptySpanL}" emptySpanM="{span>/singleColumn/emptySpanM}" emptySpanS="{span>/singleColumn/emptySpanS}"
+				columnsXL="{span>/singleColumn/columnsXL}" columnsL="{span>/singleColumn/columnsL}" columnsM="{span>/singleColumn/columnsM}"
+				adjustLabelSpan="{span>/singleColumn/adjustLabelSpan}" singleContainerFullSize="{span>/singleColumn/singleContainerFullSize}"/>
+		</f:layout>
+		<f:formContainers>
+			<f:FormContainer>
+				<f:formElements>
+					<f:FormElement label="{i18n>operationalprojectnameLabel}">
+						<f:fields>
+							<TextArea growing="true" maxLength="255" value="{main>OperationalName}" editable="{global>/edit}" placeholder="{i18n>placeholderOperationalName}" liveChange="onChange"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>longtextLabel}">
+						<f:fields>
+							<TextArea growing="true" maxLength="1200" value="{main>LongText}" editable="{global>/edit}" placeholder="{i18n>placeholderLongText}" liveChange="onChange"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>motivationLabel}">
+						<f:fields>
+							<TextArea growing="true" maxLength="1200" value="{main>Motivation}" editable="{global>/edit}" placeholder="{i18n>placeholderMotivation}" liveChange="onChange"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>inscopeLabel}">
+						<f:fields>
+							<TextArea growing="true" maxLength="1200" value="{main>InScope}" editable="{global>/edit}" placeholder="{i18n>placeholderInScope}" liveChange="onChange"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>outofscopeLabel}">
+						<f:fields>
+							<TextArea growing="true" maxLength="1200" value="{main>OutOfScope}" editable="{global>/edit}" placeholder="{i18n>placeholderOutOfScope}" liveChange="onChange"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>benefitsLabel}">
+						<f:fields>
+							<TextArea growing="true" maxLength="1200" value="{main>Benefits}" editable="{global>/edit}" placeholder="{i18n>placeholderBenefits}" liveChange="onChange"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>dependenciesLabel}">
+						<f:fields>
+							<TextArea growing="true" maxLength="1200" value="{main>Dependencies}" editable="{global>/edit}" placeholder="{i18n>placeholderDependencies}" liveChange="onChange"/>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+			<f:FormContainer>
+				<f:formElements>
+					<f:FormElement>
+						<core:Fragment fragmentName="be.infrabel.pcd.view.fragment.Stakeholder" type="XML"/>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+</core:FragmentDefinition>

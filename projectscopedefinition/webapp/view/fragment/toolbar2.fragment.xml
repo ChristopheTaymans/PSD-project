@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<OverflowToolbar>
+		<ToolbarSpacer visible="{= !${global>/headerToolbar}}" />
+		<Button icon="sap-icon://alert" text="{=${message>/}.length}" visible="{=!!${message>/}.length}"
+			type="{= ${global>/Error} ? 'Emphasized' : 'Default'}" press="onMessagePopoverPress" />
+		<Button icon="sap-icon://edit" press="onEdit"
+			visible="{= !${global>/edit} &amp;&amp; !${global>/displayOnly}}" />
+		<Button icon="sap-icon://save" press="onSave" visible="{global>/edit}"
+			type="{= ${global>/toSave} ? 'Emphasized' : 'Default' }" />
+		<Button icon="sap-icon://validate" press="onReviewByPm" text="{i18n>toReviewByPm}" type="Accept"
+			enabled="{global>/isValid}" />
+		<Button icon="sap-icon://undo" press="onReviewByPl" text="{i18n>toReviewByPl}" type="Reject"
+			enabled="{global>/isValid}" />
+		<Button icon="sap-icon://cancel" press="onPSDCancel" text="{i18n>cancelPSD}" type="Reject" />
+		<Button icon="sap-icon://decline" press="onDisplay" visible="{= ${global>/edit}}" type="Reject" />
+	</OverflowToolbar>
+</core:FragmentDefinition>

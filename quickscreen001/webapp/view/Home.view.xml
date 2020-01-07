@@ -1,0 +1,231 @@
+<core:View xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
+	xmlns:f="sap.f" height="100%" controllerName="be.infrabel.psd.quickscreen01.controller.Home"
+	xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<f:DynamicPage id="page" showFooter="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>createByQuickScreenTitle}" />
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="{span>/doubleColumn/labelSpanXL}"
+							labelSpanL="{span>/doubleColumn/labelSpanL}" labelSpanM="{span>/doubleColumn/labelSpanM}"
+							labelSpanS="{span>/doubleColumn/labelSpanS}" emptySpanXL="{span>/doubleColumn/emptySpanXL}"
+							emptySpanL="{span>/doubleColumn/emptySpanL}" emptySpanM="{span>/doubleColumn/emptySpanM}"
+							emptySpanS="{span>/doubleColumn/emptySpanS}" columnsXL="{span>/doubleColumn/columnsXL}"
+							columnsL="{span>/doubleColumn/columnsL}" columnsM="{span>/doubleColumn/columnsM}"
+							adjustLabelSpan="{span>/doubleColumn/adjustLabelSpan}"
+							singleContainerFullSize="{span>/doubleColumn/singleContainerFullSize}" />
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<!--  left part of form **************************************************************************************		-->
+							<form:formElements>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>ProjectLeaderLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd.quickscreen01" type="Text" showValueHelp="true" showSuggestion="true"
+											selectedKey="{main>PersonResponsableID}" searchHelpId="ResponsiblePerson"
+											displayMode="value" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>startdateLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<DatePicker
+											value="{path:'main>StartDate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}"
+											change="onDateChange" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>TypeOfMainWork}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd.quickscreen01" type="Text" showValueHelp="true" showSuggestion="true"
+											selectedKey="{main>MainTypeWork}" searchHelpId="MaintWorkType"
+											listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:fields>
+										<!--  empty slot in form -->
+										<Text />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>Line}" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd.quickscreen01" type="Text" showValueHelp="true" showSuggestion="true"
+											selectedKey="{main>Line}" searchHelpId="Line" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>BKBegin}" />
+									</form:label>
+									<form:fields>
+										<Input type="Number" maxLength='10' value="{path: 'main>BkFrom',
+																				    type: 'sap.ui.model.type.Integer'}" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>Location}" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd.quickscreen01" type="Text" showValueHelp="true" showSuggestion="true"
+											selectedKey="{main>Location}" searchHelpId="LocationName"
+											displayMode="value" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>DescriptionShort}" />
+									</form:label>
+									<form:fields>
+										<Input value="{main>Description}" editable="false" maxLength="40" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>extensivedescriptionLabel}" />
+									</form:label>
+									<form:fields>
+										<TextArea growing="true" maxLength="132" value="{main>Comment}"
+											editable="false" />
+										</form:fields>
+								</form:FormElement>						
+							</form:formElements>
+						</form:FormContainer>
+						<form:FormContainer>
+							<!--  right part of form **************************************************************************************		-->
+							<form:formElements>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>projectprofileLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:ComboBox compId="be.infrabel.psd.quickscreen01" 
+											searchHelpId="ProjectToCreate"
+											selectedKey="{main>ProjectType}"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>finishdateLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<DatePicker
+											value="{path:'main>FinishDate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}"
+											change="onDateChange" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:fields>
+										<!--  empty slot in form -->
+										<Text />
+									</form:fields>
+								</form:FormElement>
+																<form:FormElement>
+									<form:fields>
+										<!--  empty slot in form -->
+										<Text />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>Tracks}" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Select compId="be.infrabel.psd.quickscreen01" forceSelection="false" selectedKey="{main>Track}"
+											searchHelpId="Track"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>BKEnd}" />
+									</form:label>
+									<form:fields>
+										<Input type="Number"
+									           maxLength='10'
+											   value="{path: 'main>BkTo', type: 'sap.ui.model.type.Integer'}" />
+										<Text text="{main>BkUnit}"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>District}" />
+									</form:label>
+									<form:fields>
+									<searchHelper:Input compId="be.infrabel.psd.quickscreen01" type="Text" showValueHelp="true" showSuggestion="true"
+											selectedKey="{main>District}" searchHelpId="District"
+											displayMode="value" 
+										    listWithKey="true" />					
+									</form:fields>
+								</form:FormElement>	
+								 <form:FormElement>
+									<form:label>
+										<Label text="{i18n>freeTextShort} ({viewModel>/freeTextShortLength})" />
+									</form:label>
+									<form:fields>
+										<Input maxLength="{viewModel>/freeTextShortLength}" value="{main>FreeTextShort}" />
+									</form:fields>
+								</form:FormElement>
+									<form:FormElement>
+									<form:label>
+										<Label text="{i18n>freeTextLong} ({viewModel>/freeTextLongLength})" />
+									</form:label>
+									<form:fields>
+									<TextArea growing="true" maxLength="{viewModel>/freeTextLongLength}" value="{main>FreeTextLong}"/>		
+									</form:fields>
+								</form:FormElement>													
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="4" labelSpanL="2" labelSpanM="3" labelSpanS="3"
+							adjustLabelSpan="false" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="0"
+							columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement>
+									<core:ComponentContainer usage="investmentProgramUsageEdit" async="true"
+										propagateModel="false" autoPrefixId="true"
+										componentCreated="onInvestmentProgramComponentCreated"
+										componentFailed="onInvestmentProgramComponentFailed">
+									</core:ComponentContainer>
+								</form:FormElement>															
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+			</VBox>
+		</f:content>
+		<f:footer>
+		<Toolbar>
+		    <ToolbarSpacer/>
+			<Button icon="sap-icon://alert" text="{=${message>/}.length}" visible="{=${message>/}.length ? true : false }" type="Emphasized"
+				press="onMessagePopoverPress" />
+			<Button icon="sap-icon://save" press="onCreate" visible="{global>/isValid}" text="{i18n>SaveAndCreatePSD}"
+				type="Emphasized" />
+			<Button icon="sap-icon://decline" text="{i18n>Cancel}" press="onCancel" type="Reject" />
+				</Toolbar>
+		</f:footer>
+	</f:DynamicPage>
+</core:View>

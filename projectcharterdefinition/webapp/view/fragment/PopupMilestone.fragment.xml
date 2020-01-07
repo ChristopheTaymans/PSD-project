@@ -1,0 +1,57 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<Dialog title="{i18n>milestoneDialog}" class="sapUiContentPadding" contentWidth="auto" contentHeight="auto" showHeader="true">
+		<buttons>
+			<Button icon="sap-icon://save" press="onPopupSave" type="Accept" enabled="{global>/edit}"/>
+			<Button icon="sap-icon://decline" press="onPopupClose" type="Reject"/>
+		</buttons>
+		<content>
+			<form:Form editable="true">
+				<form:layout>
+					<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="4" labelSpanM="4" labelSpanS="12" emptySpanXL="0" emptySpanL="0" emptySpanM="0"
+						emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" adjustLabelSpan="false" singleContainerFullSize="true"/>
+				</form:layout>
+				<form:formContainers>
+					<form:FormContainer>
+						<form:formElements>
+							<form:FormElement label="{i18n>wbs2Label}">
+								<form:fields>
+									<Input id="inputwbs2ID" type="Text" value="{main>WBSID}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onValueHelpWbs" required="true" editable="{global>/Add}" liveChange="onChangeRequired"></Input>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>usageLabel}">
+								<form:fields>
+									<searchHelper:Input id="inputUsageID" type="Text" selectedKey="{main>MilestoneUsage}" showValueHelp="true" showSuggestion="true" searchHelpId="UsageMilestone"
+								                        listWithKey="true" searchTitle="{i18n>usageLabel}" required="true" compId="be.infrabel.pcd" editable="{global>/Add}" liveChange="onChangeRequired"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>startdateLabel}">
+								<form:fields>
+									<DatePicker
+										value="{path:'main>Startdate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}"
+										id="datepickerStartDateWorkID" change="onChangeDate" required="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>durationLabel}">
+								<form:fields>
+									<Input id="inputDurationID" type="Number" value="{main>Duration}" liveChange="onChangeDuration"></Input>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>basicfixdateLabel}">
+								<form:fields>
+									<DatePicker
+										value="{path:'main>BasicFixDate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}"
+										id="datepickerBasicFixDateID" editable="false"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>completionLabel}">
+								<form:fields>
+									<searchHelper:Select displayMode="key" forceSelection="false" selectedKey="{main>Completion}" searchHelpId="Completion" listWithKey="false" compId="be.infrabel.pcd"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+				</form:formContainers>
+			</form:Form>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

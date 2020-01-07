@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<Table id="tablePriorityID" width="100%" items="{ path: 'main>ToWork' }" noDataText="{i18n>tableNoPriorities}"
+		busyIndicatorDelay="{global>/Delay}" growing="true" growingScrollToLoad="true" updateFinished="onPriorityUpdateFinished"
+		mode="{= ${global>/edit} ? 'Delete' : 'None'}" delete="onDelete">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>tablePriorityTitle}"/>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://add" visible="{global>/edit}" press="onAddPriority"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column id="PriorityIDColumn">
+				<Text text="{i18n>tablePriorityIDColumnTitle}" id="PriorityIDColumnTitle"/>
+			</Column>
+			<Column id="MotivationIDColumn">
+				<Text text="{i18n>tableMotivationIDColumnTitle}" id="MotivationIDColumnTitle"/>
+			</Column>
+			<Column id="PriorityActionsIDColumn" hAlign="Right">
+				<Text text="" id="PriorityActionsIDColumnTitle"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<searchHelper:ComboBox editable="false" selectedKey="{main>Priority}" searchHelpId="PriorityWork" compId="be.infrabel.pcd"/>
+					<Text text="{main>Motivation}"/>
+					<Button icon="sap-icon://edit" visible="{global>/edit}" press="onEditPriority"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

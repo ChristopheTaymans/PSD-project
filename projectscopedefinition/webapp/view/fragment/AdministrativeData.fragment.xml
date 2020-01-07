@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" >
+	<Popover title="{i18n>AdministrativeData}" placement="Auto" initialFocus="action" modal="true" contentWidth="300px">
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Button icon="sap-icon://decline" press="onExitAdministrativeData" type="Reject" />
+			</Toolbar>
+		</footer>
+		<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="6" labelSpanL="6" labelSpanM="6"
+			labelSpanS="6" adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="0"
+			columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true">
+			<f:content>
+				<Label text="{i18n>createdonLabel}" />
+				<Text
+					text="{path: 'tree>CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy' }}" />
+				<Label text="{i18n>createdbyLabel}" />
+				<Text text="{tree>CreatedBy}" />
+				<Label text="{i18n>modifiedonLabel}" />
+				<Text
+					text="{path: 'tree>ChangedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy' }}" />
+				<Label text="{i18n>modifiedbyLabel}" />
+				<Text text="{tree>ChangedBy}" />								
+			</f:content>
+		</f:SimpleForm>
+	</Popover>
+</core:FragmentDefinition>

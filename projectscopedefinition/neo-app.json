@@ -1,0 +1,73 @@
+{
+  "routes": [
+    {
+      "path": "/resources/be/infrabel/ps/reuse",
+      "target": {
+        "type": "destination",
+        "name": "FID",
+        "entryPath": "/sap/bc/ui5_ui5/sap/ZUI5_PS_LIB"
+      },
+      "description": "Project System - Reusable Library"
+    },
+    {
+      "path": "/resources/be/infrabel/general/library",
+      "target": {
+        "type": "destination",
+        "name": "FID",
+        "entryPath": "/sap/bc/ui5_ui5/sap/ZUI5_CROSS_LIB"
+      },
+      "description": "Reusable UI5 Library for Fiori Apps (cross application)"
+    },
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.60.14"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.60.14"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.60.14"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.60.14"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "FID",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "SAP FID - Client 001"
+    }
+  ],
+  "welcomeFile": "/webapp/test/flpSandbox.html",
+  "sendWelcomeFileRedirect": true
+}

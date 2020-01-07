@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<OverflowToolbar>
+		<ToolbarSpacer visible="{= !${global>/headerToolbar}}" />
+		<Button icon="sap-icon://alert" text="{=${message>/}.length}" visible="{=!!${message>/}.length}"
+			type="{= ${global>/Error} ? 'Emphasized' : 'Default'}" press="onMessagePopoverPress" />
+		<Button icon="sap-icon://undo" press="onUndoPSDCancel" text="{i18n>undoPSDCancel}" />
+	</OverflowToolbar>
+</core:FragmentDefinition>

@@ -1,0 +1,124 @@
+{
+	"_version": "1.0.0",
+	"sap.app": {
+		"id": "be.infrabel.genericshdemo",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "http://sapfid.msnet.railb.be:8002/sap/opu/odata/sap/ZPS_PSD_V2_SRV/?&saml2=disabled",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "be.infrabel.genericshdemo.view.app",
+			"type": "XML",
+			"async": true,
+			"id": "idAppControl"
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"viewType": "XML",
+				"viewPath": "be.infrabel.genericshdemo.view",
+				"controlAggregation": "pages",
+				"controlId": "idAppControl",
+				"bypassed": {
+					"target": "notFound"
+				},
+				"async": true
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "main",
+				"target": "main"
+			}],
+			"targets": {
+				"main": {
+					"viewName": "main",
+					"viewId": "main"
+				},
+				"notFound": {
+					"viewName": "notFound",
+					"viewId": "notFound"
+				}
+			}
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},		
+				"sap.ui.comp": {},			
+				"sap.f": {},				
+				"be.infrabel.reuse.cross": {}			
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "be.infrabel.genericshdemo.i18n.i18n"
+				}
+			},
+			"main": {
+				"dataSource": "mainService",
+				"preload": false,
+				"settings": {
+					"odataVersion": "2.0",
+					"defaultBindingMode": "TwoWay",
+					"json": true,
+					"useBatch": false
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		}
+	}
+}

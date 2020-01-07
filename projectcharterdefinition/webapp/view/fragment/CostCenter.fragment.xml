@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table id="tableCostCenterID" width="100%" items="{ path: 'main>ToCostCenters' }" noDataText="{i18n>tableNoCostCenters}"
+		busyIndicatorDelay="{global>/Delay}" growing="true" growingScrollToLoad="true" updateFinished="onCostCenterUpdateFinished"
+		mode="{= ${global>/edit} ? 'Delete' : 'None'}" delete="onDelete">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>tableCostCenterTitle}"/>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://add" visible="{global>/edit}" press="onAddCostCenter"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column id="CostCenterIDColumn">
+				<Text text="{i18n>tableCostCenterIDColumnTitle}" id="CostCenterIDColumnTitle"/>
+			</Column>
+			<Column id="CostCenterDescriptionIDColumn">
+				<Text text="{i18n>tableCostCenterDescriptionIDColumnTitle}" id="CostCenterDescriptionIDColumnTitle"/>
+			</Column>
+			<Column id="CostCenterNameIDColumn">
+				<Text text="{i18n>tableCostCenterNameIDColumnTitle}" id="CostCenterNameIDColumnTitle"/>
+			</Column>
+			<Column id="PercentageIDColumn">
+				<Text text="{i18n>tablePercentageIDColumnTitle}" id="PercentageIDColumnTitle"/>
+			</Column>
+			<Column id="CostCenterActionsIDColumn" hAlign="Right">
+				<Text text="" id="CostCenterActionsIDColumnTitle"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text text="{main>CostCenterID}"/>
+					<Text text="{main>Description}"/>
+					<Text text="{main>Name}"/>
+					<Text text="{main>Percentage}"/>
+					<Button icon="sap-icon://edit" visible="{global>/edit}" press="onEditCostCenter"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

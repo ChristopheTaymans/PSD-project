@@ -1,0 +1,81 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+	<Dialog contentWidth="auto" contentHeight="auto" title="{i18n>lrpManage}" showHeader="true">
+		<buttons>
+			<Button icon="sap-icon://save" press="onLRPSave" type="Accept" enabled="{settings>/saveEnabled}" />
+			<Button icon="sap-icon://decline" press="onLRPClose" type="Reject" />
+		</buttons>
+		<content>
+			<form:Form editable="true">
+				<form:layout>
+					<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+						emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2"
+						columnsM="2" adjustLabelSpan="false" singleContainerFullSize="true" />
+				</form:layout>
+				<form:formContainers>
+					<form:FormContainer>
+						<form:formElements>
+							<form:FormElement>
+								<form:label>
+									<Label text="{i18n>LRP}" required="true" />
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="true" valueHelpOnly="true"
+										valueHelpRequest="onLrpValueHelp" value="{lrp>/Key}" fieldGroupIds="LRP">
+									</Input>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement>
+								<form:label>
+									<Label text="{i18n>StartMarck}" required="true" />
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="true" valueHelpOnly="true"
+										valueHelpRequest="onLrpMarkerValueHelp" value="{lrp>/MarkerStart}" fieldGroupIds="LRP">
+									</Input>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement>
+								<form:label>
+									<Label text="{i18n>Distance}"/>
+								</form:label>
+								<form:fields>
+									<Input type ="Number" value = "{path: 'lrp>/MarkerDistSta', type: 'sap.ui.model.type.Integer'}"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+					<form:FormContainer>
+						<form:formElements>
+							<form:FormElement>
+								<form:label>
+									<Label text="{i18n>Unit}"/>
+								</form:label>
+								<form:fields>
+									<Text text="{lrp>/LinearUnit}"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement>
+								<form:label>
+									<Label text="{i18n>EndMarck}" required="true" />
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="true" valueHelpOnly="true"
+										valueHelpRequest="onLrpMarkerValueHelp" value="{lrp>/MarkerEnd}" fieldGroupIds="LRP">
+									</Input>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement>
+								<form:label>
+									<Label text="{i18n>Distance}"/>
+								</form:label>
+								<form:fields>
+									<Input type ="Number" value = "{path: 'lrp>/MarkerDistEnd', type: 'sap.ui.model.type.Integer'}"/>		
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+				</form:formContainers>
+			</form:Form>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

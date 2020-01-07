@@ -1,0 +1,125 @@
+<core:View displayBlock="true" controllerName="be.infrabel.psd.controller.ProjectDefinition" height="100%" xmlns="sap.m"
+	xmlns:f="sap.f" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<f:DynamicPage id="projectdefinitionpageID" showFooter="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>projectdefinitionLabel} {main>Node}" />
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="{span>/singleColumn/labelSpanXL}"
+							labelSpanL="{span>/singleColumn/labelSpanL}" labelSpanM="{span>/singleColumn/labelSpanM}"
+							labelSpanS="{span>/singleColumn/labelSpanS}" emptySpanXL="{span>/singleColumn/emptySpanXL}"
+							emptySpanL="{span>/singleColumn/emptySpanL}" emptySpanM="{span>/singleColumn/emptySpanM}"
+							emptySpanS="{span>/singleColumn/emptySpanS}" columnsXL="{span>/singleColumn/columnsXL}"
+							columnsL="{span>/singleColumn/columnsL}" columnsM="{span>/singleColumn/columnsM}"
+							adjustLabelSpan="{span>/singleColumn/adjustLabelSpan}"
+							singleContainerFullSize="{span>/singleColumn/singleContainerFullSize}" />
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>projectdefinitionLabel} / {i18n>projectdescriptionLabel}"
+											required="true" />
+									</form:label>
+									<form:fields>
+										<Input value="{main>ProjectDefinition/ProjectDefinitionID}" editable="false">
+										<layoutData>
+											<l:GridData span="XL4 L4 M4 S4" />
+										</layoutData>
+										</Input>
+										<Input value="{main>Description}" editable="{global>/edit}" maxLength="40" />
+										<ObjectStatus icon="sap-icon://hint" active="true" press="onInfoPress">
+											<layoutData>
+												<l:GridData span="XL1 L1 M1 S1" />
+											</layoutData>
+										</ObjectStatus>
+									</form:fields>
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="4" labelSpanS="12"
+							adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+							columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>projectleaderLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true"
+											valueHelpOnly="true" editable="{global>/edit}"
+											selectedKey="{main>ProjectDefinition/ProjectLeaderNumber}"
+											searchHelpId="ResponsiblePerson" displayMode="value" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement label="{i18n>projectibuildLabel}">
+									<form:fields>
+										<Input value="{main>ProjectDefinition/ProjectNumberIBuild}" maxLength="20"
+											editable="{global>/edit}" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement label="{i18n>startdateLabel}">
+									<form:fields>
+										<DatePicker
+											value="{path:'main>ProjectDefinition/StartDate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}"
+											change="onDateChange" editable="{global>/edit}" />
+									</form:fields>
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement label="{i18n>projectprofileLabel}">
+									<form:fields>
+										<ComboBox
+											items="{ path: 'searchHelp>/ProjectProfile', sorter: { path: 'key' } }"
+											selectedKey="{global>/projectProfile}" editable="false">
+											<core:Item key="{searchHelp>key}"
+												text="{searchHelp>key} {searchHelp>value}" />
+										</ComboBox>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement label="{i18n>projecttocreateLabel}">
+									<form:fields>
+										<SegmentedButton selectedKey="{main>ProjectDefinition/ProjectProfileToCreate}"
+											width="50%">
+											<items>
+												<SegmentedButtonItem key="IP" text="IP"
+													visible="{= ${main>ProjectDefinition/ProjectProfileToCreate} ==='IP' || ${global>/edit}}" />
+												<SegmentedButtonItem key="FP" text="FP"
+													visible="{= ${main>ProjectDefinition/ProjectProfileToCreate} ==='FP' || ${global>/edit}}" />
+											</items>
+										</SegmentedButton>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement label="{i18n>finishdateLabel}">
+									<form:fields>
+										<DatePicker
+											value="{path:'main>ProjectDefinition/FinishDate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}"
+											change="onDateChange" editable="{global>/edit}" />
+									</form:fields>
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</core:View>

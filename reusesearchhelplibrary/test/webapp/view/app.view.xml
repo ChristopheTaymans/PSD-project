@@ -1,0 +1,10 @@
+<mvc:View
+	controllerName="be.infrabel.genericshdemo.controller.app"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	busy="{appSetting>/busy}"
+	busyIndicatorDelay="{appSetting>/delay}"
+	xmlns="sap.m"
+	height="100%">
+	<App id="idAppControl"/>
+</mvc:View>

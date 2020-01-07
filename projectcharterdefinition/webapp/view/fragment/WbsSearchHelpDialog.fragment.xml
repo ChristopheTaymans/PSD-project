@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>wbssearchhelpTitle}"
+		class="sapUiPopupWithPadding"
+		items="{main>ToWbs}"
+		liveChange="onWbsSearch"
+		growingThreshold='20'
+		confirm="onValueHelpClose"
+		cancel="onValueHelpClose">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{main>Description}"
+			description="{main>WbsID}"
+			/>
+	</SelectDialog>
+</core:FragmentDefinition>

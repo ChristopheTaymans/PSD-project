@@ -1,0 +1,55 @@
+<core:View displayBlock="true" controllerName="be.infrabel.psd.controller.ProjectStructure" height="100%"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f">
+	<f:DynamicPage id="projectStructurePage" showFooter="{= !${global>/headerToolbar}}">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:actions>
+					<OverflowToolbar>
+						<ToolbarSpacer />
+						<Button text="{i18n>PCDColumnTitle}" press="onPCDPress" enabled="{= !${global>/toSave}}" />
+						<Button text="{i18n>gotoList}" press="onListPress" enabled="{= !${global>/toSave}}" visible="{= !${global>/inboxCalled}}"/>
+					</OverflowToolbar>
+				</f:actions>
+				<f:heading>
+					<Title text="{i18n>projectstructureTitle}" />
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader visible="{global>/headerToolbar}" pinnable="false">
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<Tree id="projectstructureTreeId"
+				items="{ path : 'tree>/project', parameters :  {arrayNames:['levels'] , numberOfExpandedLevels: 4 } }"
+				updateFinished="onUpdateFinished" updateStarted="onUpdateStarted" selectionChange="onSelectLevel"
+				mode="SingleSelectLeft">
+				<headerToolbar>
+					<Toolbar>
+						<ToolbarSpacer />
+						<Button icon="sap-icon://task" press="onProjectCheck" text="{i18n>Simulate}"
+							visible="{global>/edit}" />
+						<Button id="createWBS" icon="sap-icon://create" press="onCreateWBS" enabled="{global>/edit}" />
+						<Button id="deleteNode" icon="sap-icon://delete" press="onDeleteNode"
+							enabled="{global>/edit}" />
+						<Button id="expandButton" icon="sap-icon://expand-group" press=".onExpand" />
+						<Button id="collapseButton" icon="sap-icon://collapse-group" press=".onCollapse" />
+					</Toolbar>
+				</headerToolbar>
+				<CustomTreeItem id="customtreeitemId" type="Active" press="onitemPress">
+					<FlexBox id="flexboxId" alignItems="Start" justifyContent="Start" width="100%">
+						<items>
+
+							<Text id="treetextId" text="{tree>Node}"></Text>
+							<Text id="treetextdescriptionId" textAlign="End" text="{tree>Description}"
+								visible="{global>/treeColumnExpanded}" class="sapUiLargeMarginBegin"></Text>
+							<ObjectStatus icon="sap-icon://error" state="Error" visible="{tree>Error}" />
+						</items>
+					</FlexBox>
+				</CustomTreeItem>
+			</Tree>
+		</f:content>
+		<f:footer>
+		</f:footer>
+	</f:DynamicPage>
+</core:View>

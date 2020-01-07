@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<Table id="tableRisksID" width="100%" items="{ path: 'main>ToRisks' }" noDataText="{i18n>tableNoRisks}"
+		busyIndicatorDelay="{global>/Delay}" growing="true" growingScrollToLoad="true" updateFinished="onRisksUpdateFinished"
+		mode="{= ${global>/edit} ? 'Delete' : 'None'}" delete="onDelete">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>tableRiskTitle}"/>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://add" visible="{global>/edit}" press="onAddRisk"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column id="TypeIDColumn">
+				<Text text="{i18n>tableTypeIDColumnTitle}" id="TypeIDColumnTitle"/>
+			</Column>
+			<Column id="RiskDescriptionIDColumn">
+				<Text text="{i18n>tableRiskDescriptionIDColumnTitle}" id="RiskDescriptionIDColumnTitle"/>
+			</Column>
+			<Column id="RiskImpactIDColumn">
+				<Text text="{i18n>tableRiskImpactIDColumnTitle}" id="RiskImpactIDColumnTitle"/>
+			</Column>
+			<Column id="ProbabilityIDColumn">
+				<Text text="{i18n>tableProbabilityIDColumnTitle}" id="ProbabilityIDColumnTitle"/>
+			</Column>
+			<Column id="RiskActionsIDColumn" hAlign="Right">
+				<Text text="" id="RiskActionsIDColumnTitle"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<searchHelper:ComboBox editable="false" selectedKey="{main>Type}" searchHelpId="TypeRisk" compId="be.infrabel.pcd"/>
+					<Text text="{main>Description}"/>
+					<searchHelper:ComboBox editable="false" selectedKey="{main>Impact}" searchHelpId="ImpactRisk" compId="be.infrabel.pcd"/>
+					<searchHelper:ComboBox editable="false" selectedKey="{main>Probability}" searchHelpId="ProbabilityRisk" compId="be.infrabel.pcd"/>
+					<Button icon="sap-icon://edit" visible="{global>/edit}" press="onEditRisk"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

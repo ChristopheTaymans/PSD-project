@@ -1,0 +1,5 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog class="sapUiPopupWithPadding" search="_onValueSearch"	
+		confirm="_onValueHelpClose" cancel="_onValueHelpClose" growing='true' growingThreshold='100'>
+	</SelectDialog>
+</core:FragmentDefinition>

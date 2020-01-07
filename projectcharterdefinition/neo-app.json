@@ -1,0 +1,65 @@
+{
+	"routes": [{
+		"path": "/webapp/resources/be/infrabel/reuse/cross",
+		"target": {
+			"type": "destination",
+			"name": "FID_EXM222",
+			"entryPath": "/sap/bc/ui5_ui5/sap/ZREUSESEARCHLP"
+		},
+		"description": "Reusable Library for search help"
+	}, {
+		"path": "/resources/be/infrabel/reuse/cross",
+		"target": {
+			"type": "destination",
+			"name": "FID_EXM222",
+			"entryPath": "/sap/bc/ui5_ui5/sap/ZREUSESEARCHLP"
+		},
+		"description": "Reusable Library for search help"
+	}, {
+		"path": "/webapp/resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/resources",
+			"version": "1.60.15"
+		},
+		"description": "SAPUI5 Resources"
+	}, {
+		"path": "/webapp/test-resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/test-resources",
+			"version": "1.60.15"
+		},
+		"description": "SAPUI5 Test Resources"
+	}, {
+		"path": "/resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/resources",
+			"version": "1.60.15"
+		},
+		"description": "SAPUI5 Resources"
+	}, {
+		"path": "/test-resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/test-resources",
+			"version": "1.60.15"
+		},
+		"description": "SAPUI5 Test Resources"
+	}, {
+		"path": "/sap/opu/odata",
+		"target": {
+			"type": "destination",
+			"name": "FID_EXM222",
+			"entryPath": "/sap/opu/odata"
+		},
+		"description": "SAP FID - Client 001"
+	}],
+	"welcomeFile": "/webapp/test/flpSandbox.html",
+	"sendWelcomeFileRedirect": true
+}

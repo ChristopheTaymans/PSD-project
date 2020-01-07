@@ -1,0 +1,78 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "be.infrabel.ps.reuse.investmentProgram",
+		"type": "component",
+		"embeddedBy": "../",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{compTitle}}",
+		"description": "{{compDescription}}",
+		"resources": "resources.json",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZPS_INVESTMENT_PROGRAM_SEARCH_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["base", "sap_hcb", "sap_belize", "sap_belize_plus"]
+	},
+	"sap.ui5": {
+		"componentName": "be.infrabel.ps.reuse.investmentProgram",
+		"dependencies": {
+			"minUI5Version": "1.52.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {}
+			},
+			"components": {}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"handleValidation": true,
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "be.infrabel.ps.reuse.investmentProgram.i18n.i18n"
+				}
+			},
+			"investmentProgram": {
+				"dataSource": "mainService",
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Inline",
+					"json": true,
+					"useBatch": false
+				}
+			}
+		},
+		"resources": {
+			"css": [],
+			"js": []
+		}
+	}
+}

@@ -1,0 +1,63 @@
+<mvc:View controllerName="be.infrabel.pcd.controller.Main" xmlns:layout="sap.ui.layout" xmlns:m="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.f"
+	xmlns="sap.uxap" xmlns:form="sap.ui.layout.form">
+	<m:Page id="floatingFooterPage" title="{parts: ['i18n>mainTitle', 'main>ExternalProjectID' ]}" floatingFooter="true"
+		enableScrolling="false">
+		<ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="true" useIconTabBar="true"
+			showTitleInHeaderContent="false" height="100%" upperCaseAnchorBar="false" showFooter="true">
+			<headerTitle>
+				<ObjectPageDynamicHeaderTitle>
+					<navigationActions>
+						<m:Button text="{i18n>toPSDworklist}" press="onPSDCockpit"
+							enabled="{=!${global>/isChanged}}" />
+						<m:Button text="{i18n>toPSD}" press="onPSD" enabled="{=!${global>/isChanged}}" />
+					</navigationActions>
+				</ObjectPageDynamicHeaderTitle>
+			</headerTitle>
+			<sections>
+				<ObjectPageSection id="sectionStatementID" title="{i18n>sectionstatementTitle}">
+					<subSections>
+						<ObjectPageSubSection id="subsectionStatementID" title="{i18n>sectionstatementTitle}">
+							<blocks>
+								<core:Fragment fragmentName="be.infrabel.pcd.view.fragment.Statement" type="XML" />
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<ObjectPageSection id="sectionAssumptionID" title="{i18n>sectionassumptionTitle}">
+					<subSections>
+						<ObjectPageSubSection id="subsectionAssumptionID" title="{i18n>sectionassumptionTitle}">
+							<blocks>
+								<core:Fragment fragmentName="be.infrabel.pcd.view.fragment.Assumption" type="XML" />
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<ObjectPageSection id="sectionWorksID" title="{i18n>sectionworksTitle}">
+					<ObjectPageSubSection id="subsectionWorksID" title="{i18n>sectionworksTitle}">
+						<blocks>
+							<core:Fragment fragmentName="be.infrabel.pcd.view.fragment.Works" type="XML" />
+						</blocks>
+					</ObjectPageSubSection>
+				</ObjectPageSection>
+				<ObjectPageSection id="sectionMilestoneID" title="{i18n>sectionmilestoneTitle}">
+					<ObjectPageSubSection id="subsectionMilestoneID" title="{i18n>sectionmilestoneTitle}">
+						<blocks>
+							<core:Fragment fragmentName="be.infrabel.pcd.view.fragment.Milestones" type="XML" />
+						</blocks>
+					</ObjectPageSubSection>
+				</ObjectPageSection>
+			</sections>
+		</ObjectPageLayout>
+		<m:footer>
+			<m:OverflowToolbar>
+				<m:Button icon="sap-icon://hint" visible="true" type="Emphasized" press="onInfoPress" />
+				<m:ToolbarSpacer />
+				<m:Button icon="sap-icon://alert" text="{=${message>/}.length}"
+					visible="{=${message>/}.length > 0 ? true : false }" type="Reject" press="onMessagePopoverPress" />
+				<m:Button icon="sap-icon://save" press="onSave" visible="true" text="{i18n>buttonSave}"
+					type="{=${global>/isChanged} === true ? 'Emphasized' : 'Default' }" />
+			</m:OverflowToolbar>
+		</m:footer>
+	</m:Page>
+</mvc:View>

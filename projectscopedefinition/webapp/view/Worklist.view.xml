@@ -1,0 +1,81 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:footerbar="sap.ushell.ui.footerbar"
+	controllerName="be.infrabel.psd.controller.Worklist">
+	<f:DynamicPage id="page">
+		<f:title>
+			<f:DynamicPageTitle id="actionMenu">
+				<f:heading>
+					<Title text="{i18n>worklistTitle}" level="H2" />
+				</f:heading>
+				<f:actions>	
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<IconTabBar id="filterTabbar" upperCase="false" headerMode="Inline" stretchContentHeight="true"
+				select="onSelectIconTabBar" class="infrabelIconTabBar" expandable="false">
+				<content>
+					<Table id="table"
+						items="{ path: 'main>ToProjectList', suspended : 'true',  parameters :{ countMode : 'Inline'} }"
+						busy="{global>/busy}" busyIndicatorDelay="{global>/delay}" noDataText="{i18n>tableNoDataText}"
+						growingThreshold="100" growing="true" growingScrollToLoad="true" mode="SingleSelectMaster" sticky="ColumnHeaders,HeaderToolbar">
+						<headerToolbar>
+							<OverflowToolbar id="overflowtoolbarId">
+								<Title id="tableHeaderIdTitle" text="{i18n>worklistTableTitle}" level="H3" />
+								<ToolbarSpacer id="toolbarspacerId" />
+								<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search="onSearch">
+									<layoutData>
+										<OverflowToolbarLayoutData id="_IDEGen_overflowtoolbarlayoutdata0"
+											maxWidth="200px" priority="NeverOverflow" />
+									</layoutData>
+								</SearchField>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column id="ProjectDefinitionIDColumn" width="10%">
+								<Text text="{i18n>TableProjectDefinitionIDColumnTitle}"
+									id="ProjectDefinitionIDColumnTitle" />
+							</Column>
+							<Column id="ProjectNumberIDColumn" width="10%">
+								<Text id="ProjectNumberColumnTitle" text="{i18n>TableProjectNumberColumnTitle}" />
+							</Column>
+							<Column id="ShortDescriptionIDColumn" width="25%">
+								<Text id="ShortDescriptionColumnTitle" text="{i18n>TableShortDescriptionColumnTitle}" />
+							</Column>
+							<Column id="ProjectLeaderIDColumn" width="20%">
+								<Text id="ProjectLeaderColumnTitle" text="{i18n>TableProjectLeaderColumnTitle}" />
+							</Column>
+							<Column id="LastModifiedIDColumn">
+								<Text id="LastModifiedColumnTitle" text="{i18n>TableLastModifiedColumnTitle}" />
+							</Column>
+							<Column>
+								<Text text="{i18n>PCDColumnTitle}" />
+							</Column>
+							<Column>
+								<Text text="{i18n>PSDColumnTitle}" />
+							</Column>
+							<Column id="StatusIDColumn">
+								<Text id="StatusColumnIDTitle" text="{i18n>TableStatusColumnTitle}" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Active">
+								<cells>
+									<ObjectIdentifier title="{main>ProjectDefinitionID}" />
+									<ObjectIdentifier title="{main>LinkedProject}" />
+									<ObjectIdentifier title="{main>ShortDescription}" maxlength="40"/>
+									<ObjectIdentifier title="{main>ProjectLeaderName}" />
+									<ObjectIdentifier
+										title="{path: 'main>ChangedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy' }}" />
+									<Button text="{i18n>PCDColumnTitle}" press="onPCDPress" />
+									<Button text="{i18n>PSDColumnTitle}" press="onPSDPress"
+										type="{ path: 'main>Status',formatter: '.getPsdButtonType'}" />
+									<ObjectIdentifier title="{main>StatusDescription}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabBar>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

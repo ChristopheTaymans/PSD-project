@@ -1,0 +1,30 @@
+{
+  "name": "ui5-scope-definition",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "keywords": [
+    "UI5"
+  ],
+  "author": {
+    "name": "infrabel",
+    "email": "user@infrabel.be"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git/sapfiori/projectsystem/projectscopedefinition"
+  },
+  "devDependencies": {
+    "@ui5/cli": "1.4.3",
+    "@sap/ui5-builder-webide-extension": "1.0.2",
+    "vscode-uri": "1.0.6"
+  },
+  "scripts": {
+    "build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ui5-builder-webide-extension"
+    ]
+  }
+}

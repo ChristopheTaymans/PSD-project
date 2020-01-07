@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<f:FormElement>
+		<f:label>
+			<Label text="{i18n>wbselementLabel} / {i18n>wbsdescriptionLabel}" required="true" />
+		</f:label>
+		<f:fields>
+			<Input value="{main>Node}" editable="false">
+			<layoutData>
+				<l:GridData span="XL4 L4 M4 S4" />
+			</layoutData>
+			</Input>
+			<Input value="{main>Description}" editable="{global>/edit}" maxLength="40" />
+			<ObjectStatus icon="sap-icon://hint" active="true" press="onInfoPress">
+				<layoutData>
+					<l:GridData span="XL1 L1 M1 S1" />
+				</layoutData>
+			</ObjectStatus>
+		</f:fields>
+	</f:FormElement>
+	<f:FormElement>
+		<f:label>
+			<Label text="{i18n>extensivedescriptionLabel}" required="true" />
+		</f:label>
+		<f:fields>
+			<TextArea growing="true" maxLength="132" value="{main>wbs/ExtensiveDescription}"
+				editable="{global>/edit}" />
+			</f:fields>
+	</f:FormElement>
+	<f:FormElement >
+				<f:label>
+			<Label text="{i18n>personresponsibleLabel}" required="true" />
+		</f:label>
+		<f:fields>	
+			<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" valueHelpOnly="true"  editable="{global>/edit}" 
+											selectedKey="{main>wbs/PersonResponsableID}" searchHelpId="ResponsiblePerson"
+											displayMode="value" listWithKey="true" 
+										 />
+		</f:fields>
+	</f:FormElement>
+</core:FragmentDefinition>

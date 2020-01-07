@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<Table id="tableLinkedProjectID" width="100%" items="{ path: 'main>ToLinkedProjects' }" noDataText="{i18n>tableNoLinkedProjects}"
+		busyIndicatorDelay="{global>/Delay}" growing="true" growingScrollToLoad="true" updateFinished="onLinkedProjectUpdateFinished"
+		mode="{= ${global>/edit} ? 'Delete' : 'None'}" delete="onDelete">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>tableLinkedProjectTitle}"/>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://add" visible="{global>/edit}" press="onAddLinkedProject"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column id="DefinitionIDColumn">
+				<Text text="{i18n>tableDefinitionIDColumnTitle}" id="DefinitionIDColumnTitle"/>
+			</Column>
+			<Column id="ManagingServiceIDColumn">
+				<Text text="{i18n>tableManagingServiceIDColumnTitle}" id="ManagingServiceIDColumnTitle"/>
+			</Column>
+			<!--<Column id="LinkedProjectActionsIDColumn" hAlign="Right">-->
+			<!--	<Text text="" id="LinkedProjectActionsIDColumnTitle"/>-->
+			<!--</Column>-->
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text text="{main>ExternalLinkedProjectID}"/>
+					<searchHelper:ComboBox editable="false" selectedKey="{main>ManagingService}" searchHelpId="ManagingService" compId="be.infrabel.pcd"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="{i18n>dialog.title.PositionId}"
+		class="sapUiPopupWithPadding"
+		items="{investmentProgram>/ProgPositionIdSet}"
+		search="_onPositionIdSearch"
+		confirm="_onPositionIdConfirm"
+		cancel="_onPositionIdCancel">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{investmentProgram>PositionId}"
+			description="{investmentProgram>PositionDescriptionUp3} /{investmentProgram>PositionDescriptionUp2} / {investmentProgram>PositionDescriptionUp1} / {investmentProgram>PositionDescription} "
+			/>
+	</SelectDialog>
+</core:FragmentDefinition>

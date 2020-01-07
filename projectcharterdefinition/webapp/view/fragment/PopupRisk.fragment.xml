@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<Dialog title="{i18n>riskDialog}" class="sapUiContentPadding" contentWidth="auto" contentHeight="auto" showHeader="true">
+		<buttons>
+			<Button icon="sap-icon://save" press="onPopupSave" type="Accept" enabled="{global>/edit}"/>
+			<Button icon="sap-icon://decline" press="onPopupClose" type="Reject"/>
+		</buttons>
+		<content>
+			<form:Form editable="true">
+				<form:layout>
+					<form:ResponsiveGridLayout labelSpanXL="3" labelSpanL="4" labelSpanM="4" labelSpanS="12" emptySpanXL="0" emptySpanL="0" emptySpanM="0"
+						emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" adjustLabelSpan="false" singleContainerFullSize="true"/>
+				</form:layout>
+				<form:formContainers>
+					<form:FormContainer>
+						<form:formElements>
+							<form:FormElement label="{i18n>typeLabel}">
+								<form:fields>
+									<searchHelper:ComboBox id="comboboxTypeID" selectedKey="{main>Type}" searchHelpId="TypeRisk" editable="{global>/Add}" required="true" compId="be.infrabel.pcd" change="onChangeRequired"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>descriptionLabel}">
+								<form:fields>
+									<Input type="Text" value="{main>Description}"></Input>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+					<form:FormContainer>
+						<form:formElements>
+							<form:FormElement label="{i18n>impactLabel}">
+								<searchHelper:Select forceSelection="false" selectedKey="{main>Impact}" searchHelpId="ImpactRisk" compId="be.infrabel.pcd"/>
+							</form:FormElement>
+							<form:FormElement label="{i18n>probabilityLabel}">
+								<searchHelper:Select forceSelection="false" selectedKey="{main>Probability}" searchHelpId="ProbabilityRisk" compId="be.infrabel.pcd"/>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+				</form:formContainers>
+			</form:Form>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

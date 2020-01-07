@@ -1,0 +1,79 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog contentWidth="80%" contentHeight="50%" title="{i18n>searchFloc} {settings>/count}/{settings>/total}"
+		showHeader="true">
+		<buttons>
+			<Button icon="sap-icon://accept" press="onFlSearchClose" type="Accept"
+				visible="{settings>/flMultiSelect}" />
+			<Button icon="sap-icon://decline" press="onFlSearchClose" type="Reject" />
+		</buttons>
+		<content>
+			<Table id="FlocTable" noDataText="{settings>/flNoDataText}" growing='true' alternateRowColors="true"
+				mode="{= ${settings>/flMultiSelect} ? 'MultiSelect' : 'SingleSelectLeft'}" growingScrollToLoad="true"
+				growingThreshold='100' selectionChange="onFlocSelected" updateFinished="onFlocUpdateFinished"
+				items="{ path : 'main>/FunctionalLocationSet', suspended : true,parameters :{ countMode : 'Inline'}}"
+				sticky="ColumnHeaders">
+				<headerToolbar>
+					<Toolbar>
+						<ToolbarSpacer />
+						<SegmentedButton id="flocSegmentedButton" selectedKey="{settings>/objectType}"
+							selectionChange="onTechObjectChange">
+							<items>
+								<SegmentedButtonItem visible="false" key="0" />
+								<SegmentedButtonItem text="{i18n>Switch}" key="1" />
+								<SegmentedButtonItem text="{i18n>Crossing}" key="2" />
+								<SegmentedButtonItem text="{i18n>PowerDistribution}" key="3" />
+								<SegmentedButtonItem text="{i18n>Other}" key="4" />
+							</items>
+						</SegmentedButton>
+						<SearchField search="onFlSearch" width="80%"
+							enabled="{= ${settings>/objectType}==='0' ? false : true }" />
+						<ToolbarSpacer />
+						<Button tooltip="View Sort Settings" icon="sap-icon://sort" press="onSortButtonPressed" />
+					</Toolbar>
+				</headerToolbar>
+				<ColumnListItem>
+					<cells>
+						<Text text="{main>FlocLabel}" />
+						<Text text="{main>Pltxt}" />
+						<Text text="{main>ObjectType}" />
+						<Text text="{main>LrpId}" />
+						<Text text="{main>CostCenter}" />
+						<Text text="{main>CostCenterDesc}" />
+					</cells>
+				</ColumnListItem>
+				<columns>
+					<Column width="auto">
+						<header>
+							<Text text="{i18n>FunctionalLocation}" />
+						</header>
+					</Column>
+					<Column width="auto">
+						<header>
+							<Text text="{i18n>Description}" />
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Text text="{i18n>ObjectType}" />
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Text text="{i18n>LRP}" />
+						</header>
+					</Column>
+					<Column width="auto">
+						<header>
+							<Text text="{i18n>CostCenter}" />
+						</header>
+					</Column>
+					<Column width="auto">
+						<header>
+							<Text text="{i18n>CostCenterDesc}" />
+						</header>
+					</Column>					
+				</columns>
+			</Table>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

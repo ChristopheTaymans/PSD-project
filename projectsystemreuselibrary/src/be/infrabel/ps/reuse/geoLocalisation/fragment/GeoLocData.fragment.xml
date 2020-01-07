@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table mode="{= ${settings>/edit} ? 'Delete' : 'None'}" growing="true" delete="onDeleteLine"
+		growingScrollToLoad="true" growingThreshold="50" noDataText="{i18n>noData}" items="{data>/GeoData}">
+		<headerToolbar>
+				<core:Fragment fragmentName="be.infrabel.ps.reuse.geoLocalisation.fragment.GeoLocType" type="XML" />
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Title text="{data>/LevelKey}" />
+			</Column>
+			<Column>
+				<Title text="{i18n>Description}" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text text="{data>Key}"/>
+					<Text text="{data>Description}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table mode="{= ${settings>/edit} ? 'Delete' : 'None'}" growing="true" delete="onDeleteLine"
+		growingScrollToLoad="true" growingThreshold="50" noDataText="{i18n>noData}" items="{data>/GeoData}">
+		<headerToolbar>
+				<core:Fragment fragmentName="be.infrabel.ps.reuse.geoLocalisation.fragment.GeoLocType" type="XML" />
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Title text="{data>/LevelKey}" />
+			</Column>
+			<Column>
+				<Title text="{i18n>StartMarck}" />
+			</Column>
+			<Column>
+				<Title text="{i18n>Distance}" />
+			</Column>
+			<Column>
+				<Title text="{i18n>EndMarck}" />
+			</Column>
+			<Column>
+				<Title text="{i18n>Distance}" />
+			</Column>
+			<Column>
+				<Title text="{i18n>StartPoint}" />
+			</Column>
+			<Column>
+				<Title text="{i18n>EndPoint}" />
+			</Column>
+			<Column>
+				<Title text="{i18n>Unit}" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text text="{data>Key}"/>
+					<Text text="{data>MarkerStart}"/>
+					<Text text="{data>MarkerDistSta}"/>
+					<Text text="{data>MarkerEnd}"/>
+					<Text text="{data>MarkerDistEnd}"/>
+					<Text text="{data>StartPoint}"/>
+					<Text text="{data>EndPoint}"/>
+					<Text text="{data>LinearUnit}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

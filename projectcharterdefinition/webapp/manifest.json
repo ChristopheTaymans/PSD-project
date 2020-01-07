@@ -1,0 +1,168 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "be.infrabel.pcd",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"resources": "resources.json",
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZPS_PCD_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.1worklist",
+			"version": "1.65.13"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://task",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "be.infrabel.pcd.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.0",
+			"libs": {
+				"sap.collaboration": {
+					"lazy": true
+				},
+				"sap.f": {},
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ushell": {},
+				"be.infrabel.reuse.cross": {
+					"minVersion": "0.0.1"
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "be.infrabel.pcd.i18n.i18n"
+				}
+			},
+			"global": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"main": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"useBatch": true
+				}
+			}
+		},
+		"services": {
+			"ShellUIService": {
+				"factoryName": "sap.ushell.ui5service.ShellUIService",
+				"lazy": false,
+				"settings": {
+					"setTitle": "auto"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "be.infrabel.pcd.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": [
+						"notFound"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "mainRoute",
+					"target": [
+						"mainTarget"
+					]
+				}
+			],
+			"targets": {
+				"mainTarget": {
+					"viewName": "Main",
+					"viewId": "main",
+					"viewLevel": 1,
+					"title": "{i18n>mainViewTitle} - {main>/Project/ProjectID}"
+				}
+			}
+		},
+		"defaultSpan": {
+			"singleColumn": {
+				"labelSpanXL": 2,
+				"labelSpanL": 2,
+				"labelSpanM": 2,
+				"labelSpanS": 12,
+				"emptySpanXL": 0,
+				"emptySpanL": 0,
+				"emptySpanM": 0,
+				"emptySpanS": 0,
+				"columnsXL": 1,
+				"columnsL": 1,
+				"columnsM": 1,
+				"adjustLabelSpan": false,
+				"singleContainerFullSize": true
+			},
+			"doubleColumn": {
+				"labelSpanXL": 2,
+				"labelSpanL": 4,
+				"labelSpanM": 6,
+				"labelSpanS": 12,
+				"emptySpanXL": 0,
+				"emptySpanL": 0,
+				"emptySpanM": 0,
+				"emptySpanS": 0,
+				"columnsXL": 12,
+				"columnsL": 12,
+				"columnsM": 12,
+				"adjustLabelSpan": false,
+				"singleContainerFullSize": true
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zps_pcd/webapp",
+		"_version": "1.1.0"
+	}
+}

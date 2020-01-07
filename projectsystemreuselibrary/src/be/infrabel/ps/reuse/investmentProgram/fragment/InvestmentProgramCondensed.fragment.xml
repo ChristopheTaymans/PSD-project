@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m">
+	<f:Form editable="true">
+		<f:layout>
+			<f:ResponsiveGridLayout labelSpanXL="0" labelSpanL="0" labelSpanM="0" labelSpanS="0" adjustLabelSpan="false"
+				emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+				singleContainerFullSize="false" />
+		</f:layout>
+		<f:formContainers>
+			<f:FormContainer>
+				<f:formElements>
+					<f:FormElement>
+						<f:fields>
+							<ComboBox id="inpInvestProgramId" editable="{main>/edit}" showSecondaryValues="{main>/edit}"
+								selectedKey="{main>/InvestmentProgram}"
+								selectionChange="changeInvestmentProgramSelected"
+								items="{ path: 'investmentProgram>/InvestmentProgramSet',
+                                                                                           sorter: { path: 'Program' }	}">
+								<core:ListItem key="{investmentProgram>Program}" text="{investmentProgram>Program}"
+									additionalText="{investmentProgram>ProgramDescription}-{investmentProgram>ApprovalYear}" />
+                                    			<layoutData>
+								<l:GridData span="XL6 L6 M6 S2" />
+							</layoutData>
+							</ComboBox>
+							<Input id="inpYearId" editable="false" value="{main>/InvestmentProgramYear}">
+							<layoutData>
+								<l:GridData span="XL6 L6 M6 S2" />
+							</layoutData>
+							</Input>
+							<Input id="inpPositionId" required="true" editable="{main>/edit}"
+								showValueHelp="{main>/edit}" valueHelpRequest="onHandleValueHelpPositionId"
+								change="onChangePositionId" value="{main>/PositionID}"
+								placeholder="{i18n>suggestPositionId}">
+                                			<layoutData>
+								<l:GridData span="XL6 L6 M6 S3" />
+							</layoutData>
+							</Input>
+							<Text id="txtPositionIdDescriptionId" text="{main>/PositionIdDescription}">
+                            			<layoutData>
+								<l:GridData span="XL6 L6 M6 S4" />
+							</layoutData>
+							</Text>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+</core:FragmentDefinition>

@@ -1,0 +1,6 @@
+<mvc:View xmlns="sap.f" xmlns:mvc="sap.ui.core.mvc" controllerName="be.infrabel.psd.controller.FlexibleColumnLayout"
+	height="100%">
+	<FlexibleColumnLayout id="FlexibleColumnLayoutId" stateChange="onStateChange" layout="TwoColumnsMidExpanded"
+		backgroundDesign="Solid">
+	</FlexibleColumnLayout>
+</mvc:View>

@@ -1,0 +1,179 @@
+<core:View displayBlock="true" controllerName="be.infrabel.psd.controller.Wbs3" height="100%" xmlns:f="sap.f"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	xmlns:searchHelper="be.infrabel.reuse.cross.genericsearch">
+	<f:DynamicPage id="wbs3PageID">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>wbs3Title} {main>Node}" />
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="{span>/singleColumn/labelSpanXL}"
+							labelSpanL="{span>/singleColumn/labelSpanL}" labelSpanM="{span>/singleColumn/labelSpanM}"
+							labelSpanS="{span>/singleColumn/labelSpanS}" emptySpanXL="{span>/singleColumn/emptySpanXL}"
+							emptySpanL="{span>/singleColumn/emptySpanL}" emptySpanM="{span>/singleColumn/emptySpanM}"
+							emptySpanS="{span>/singleColumn/emptySpanS}" columnsXL="{span>/singleColumn/columnsXL}"
+							columnsL="{span>/singleColumn/columnsL}" columnsM="{span>/singleColumn/columnsM}"
+							adjustLabelSpan="{span>/singleColumn/adjustLabelSpan}"
+							singleContainerFullSize="{span>/singleColumn/singleContainerFullSize}" />
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<form:formElements>
+								<core:Fragment fragmentName="be.infrabel.psd.view.fragment.wbsHeader" type="XML" />
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="{span>/doubleColumn/labelSpanXL}"
+							labelSpanL="{span>/doubleColumn/labelSpanL}" labelSpanM="{span>/doubleColumn/labelSpanM}"
+							labelSpanS="{span>/doubleColumn/labelSpanS}" emptySpanXL="{span>/doubleColumn/emptySpanXL}"
+							emptySpanL="{span>/doubleColumn/emptySpanL}" emptySpanM="{span>/doubleColumn/emptySpanM}"
+							emptySpanS="{span>/doubleColumn/emptySpanS}" columnsXL="{span>/doubleColumn/columnsXL}"
+							columnsL="{span>/doubleColumn/columnsL}" columnsM="{span>/doubleColumn/columnsM}"
+							adjustLabelSpan="{span>/doubleColumn/adjustLabelSpan}"
+							singleContainerFullSize="{span>/doubleColumn/singleContainerFullSize}" />
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement label="{i18n>startdateLabel}">
+									<form:fields>
+										<DatePicker
+											value="{path:'main>wbs/StartDate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}"
+											change="onDateChange" editable="{global>/edit}" />
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>projecttypeLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" showSuggestion="true"
+											editable="{global>/edit}" selectedKey="{main>wbs/ProjectType}"
+											searchHelpId="ProjectType" displayMode="both" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+								<!-- Investment reason -->
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>investmentreasonLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" showSuggestion="true" 
+										    change="_onInvestementReasonChange "
+											editable="{global>/edit}" selectedKey="{main>wbs/InvestmentReason}"
+											searchHelpId="InvestmentReason" displayMode="both" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+								<!--classification WBS -->
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>classificationwbsLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" showSuggestion="true"
+											editable="{global>/edit}" selectedKey="{main>wbs/ClassificationWBS}"
+											searchHelpId="WbsClassification" displayMode="both" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+								<!-- Unit ICT Responsable -->
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>unitictresponsableLabel}" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" showSuggestion="true"
+											editable="{global>/edit}" selectedKey="{main>wbs/UnitICTResponsable}"
+											searchHelpId="UnitICTRespExec" displayMode="both" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement label="{i18n>finishdateLabel}">
+									<form:fields>
+										<DatePicker
+											value="{path:'main>wbs/FinishDate', type:'sap.ui.model.type.DateTime', formatOptions: { UTC : 'true', pattern: 'dd.MM.yyyy', strictParsing: true}}"
+											change="onDateChange" editable="{global>/edit}" />
+									</form:fields>
+								</form:FormElement>
+								<!-- Scale -->
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>scaleLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" showSuggestion="true"
+											editable="{global>/edit}" selectedKey="{main>wbs/Scale}"
+											searchHelpId="Scale" displayMode="both" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+								<!-- Planning method PL -->
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>planningmethodplLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" showSuggestion="true"
+											editable="{global>/edit}" selectedKey="{main>wbs/PlanningMethodPL}"
+											searchHelpId="PlanningMethodPl" displayMode="both" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+								<!-- Planning method PM -->
+								<form:FormElement>
+									<form:label>
+										<Label text="{i18n>planningmethodpmLabel}" required="true" />
+									</form:label>
+									<form:fields>
+										<searchHelper:Input compId="be.infrabel.psd" type="Text" showValueHelp="true" showSuggestion="true"
+											editable="{global>/edit}" selectedKey="{main>wbs/PlanningMethodPM}"
+											searchHelpId="PlanningMethodPm" displayMode="both" listWithKey="true" />
+									</form:fields>
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="{span>/singleColumn/labelSpanXL}"
+							labelSpanL="{span>/singleColumn/labelSpanL}" labelSpanM="{span>/singleColumn/labelSpanM}"
+							labelSpanS="{span>/singleColumn/labelSpanS}" emptySpanXL="{span>/singleColumn/emptySpanXL}"
+							emptySpanL="{span>/singleColumn/emptySpanL}" emptySpanM="{span>/singleColumn/emptySpanM}"
+							emptySpanS="{span>/singleColumn/emptySpanS}" columnsXL="{span>/singleColumn/columnsXL}"
+							columnsL="{span>/singleColumn/columnsL}" columnsM="{span>/singleColumn/columnsM}"
+							adjustLabelSpan="{span>/singleColumn/adjustLabelSpan}"
+							singleContainerFullSize="{span>/singleColumn/singleContainerFullSize}" />
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement>
+									<core:ComponentContainer id="geoLocContainer" async="true" propagateModel="false"
+										autoPrefixId="true" />
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement>
+									<core:ComponentContainer id="partnerContainer" async="true" propagateModel="false"
+										autoPrefixId="true" />
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</core:View>

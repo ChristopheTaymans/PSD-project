@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="lrpSelectDialog" title="{i18n>LrpSelectId}" search="onSelectDialogSearch" confirm="onLrpHelpClose" cancel="onLrpHelpClose"
+		growing='true' growingThreshold='100' items="{ path:'main>/LrpSet',suspended:'true'}">
+		<CustomListItem>
+			<Text text="{main>LrpId} {main>LrpDescr}" />
+		</CustomListItem>
+	</SelectDialog>
+</core:FragmentDefinition>

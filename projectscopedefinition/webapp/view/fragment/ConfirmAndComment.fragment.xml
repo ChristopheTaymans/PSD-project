@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog title="{i18n>ConfirmAndComment}" contentWidth="50%">
+		<beginButton>
+			<Button icon="sap-icon://accept" text="{i18n>submit}" press="onCloseConfirmAndComment" type="Accept"
+				id="ConfirmButtonId" />
+		</beginButton>
+		<endButton>
+			<Button icon="sap-icon://decline" text="{i18n>cancel}" press="onCloseConfirmAndComment" type="Reject" />
+		</endButton>
+		<content>
+			<l:VerticalLayout class="sapUiContentPadding" width="100%">
+				<TextArea width="100%" value="{global>/wfComment}" placeholder="{i18n>wfComment}" rows="5"
+					growing="true" />
+			</l:VerticalLayout>
+		</content>		
+	</Dialog>
+</core:FragmentDefinition>

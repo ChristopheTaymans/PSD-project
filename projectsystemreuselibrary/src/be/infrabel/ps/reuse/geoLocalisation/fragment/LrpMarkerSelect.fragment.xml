@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog contentWidth="auto" contentHeight="50%" title="{i18n>LrpMarkerSelection} {main>LrpId}" showHeader="true">
+		<endButton>
+			<Button icon="sap-icon://decline" press="onLrpMarkerHelpClose" type="Reject" />
+		</endButton>
+		<Table id="markerSelection" noDataText="{i18n>noMarkerData}" selectionChange="onMarkerSelected" growing='true' mode="SingleSelectLeft"
+			growingScrollToLoad="true" growingThreshold='100' items="{main>ToMarker}">
+			<ColumnListItem>
+				<cells>
+					<Text text="{main>Marker}" />
+					<Text text="{main>MarkerType}" />
+					<Text text="{main>StartPoint}" />
+					<Text text="{main>EndPoint}" />
+					<Text text="{main>LinearLength}" />
+					<Text text="{main>LinearUnit}" />
+				</cells>
+			</ColumnListItem>
+			<columns>
+				<Column>
+					<header>
+						<Text text="{i18n>Marker}" />
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Text text="{i18n>MarkerType}" />
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Text text="{i18n>StartPoint}" />
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Text text="{i18n>EndPoint}" />
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Text text="{i18n>LinearLength}" />
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Text text="{i18n>Unit}" />
+					</header>
+				</Column>
+			</columns>
+		</Table>
+	</Dialog>
+</core:FragmentDefinition>
